@@ -1,8 +1,12 @@
+import Layout from '../components/layout';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-      <>
+      <Layout
+        title={"Ably and Next.js template"}
+        description={"Ably and Next.js template"}
+      >
         <h1 className={styles.title}>
           <a href="https://ably.com/?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-template&utm_content=ably-nextjs-template&src=GLB-2211-ably-nextjs-template-github-repo">Ably</a> &amp; <a href="https://nextjs.org">Next.js</a> starter template
         </h1>
@@ -42,6 +46,6 @@ export default function Home() {
             </p>
           </a>
         </div>
-      </>
+      </Layout>
   )
 }
