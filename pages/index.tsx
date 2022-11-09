@@ -71,7 +71,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src="/vercel.svg" alt="Vercel Logo" width={108} height={24} />
+            <Image src="/vercel.svg" alt="Vercel Logo" width={100} height={16} />
           </a>
         </span>
       </footer>
