@@ -10,12 +10,13 @@ type LayoutProps = {
 }
 
 export default function Layout({ children, pageTitle, metaDescription }: LayoutProps) {
+  const headTitle = (pageTitle? `${pageTitle} - ` : '') + 'Ably and Next.js starter template'
   return (
     <div className={styles.container}>
       <Head>
-        <title>{pageTitle? `${pageTitle} - ` : ''}Ably and Next.js starter template</title>
+        <title>{headTitle}</title>
         <meta name="description" content={metaDescription} />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="https://static.ably.dev/motif-red.svg?ably-nextjs-template" type="image/svg+xml" />
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>
