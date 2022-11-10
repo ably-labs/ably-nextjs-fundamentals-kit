@@ -1,0 +1,19 @@
+name: Create Infrastructure
+
+on: 
+  push:
+    paths:
+      - '.github/workflows/create-infra.yml'
+  workflow_dispatch:
+
+jobs:
+  create_infra:
+    runs-on: ubuntu-latest
+    name: Create Ably App
+    steps:
+      - name: Create Ably App
+        id: ablyapp
+        uses: ably-labs/ably-control-api-action@v0.1.5
+        with:
+            account-id: '${{ secrets.ABLY_ACCOUNT_ID }}'
+            control-api-key: '${{ secrets.ABLY_CONTROL_API_KEY }}'
