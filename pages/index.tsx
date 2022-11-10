@@ -7,7 +7,7 @@ export default function Home() {
         metaDescription={"Ably and Next.js template"}
       >
         <p className={styles.description}>
-          This template demonstrates using some of the Ably fundamentals with Next.js. You can the build features and use cases upon these fundamentals such as notifications, activity streams, chat, realtime visualisations and dashboards, and collaborative multiplayer experiences.
+          This template demonstrates using some of the Ably fundamentals with Next.js. You can build features and use cases upon these fundamentals such as notifications, activity streams, chat, realtime visualisations and dashboards, and collaborative multiplayer experiences.
         </p>
 
         <div className={styles.grid}>
@@ -37,7 +37,7 @@ export default function Home() {
           >
             <h2>History &rarr;</h2>
             <p>
-              Ably persists messages for 2 minutes by default. But this can be increase to 24 - 72 hours.
+              Retrieve a history of messages that have been published to a channel.
             </p>
           </a>
         </div>
