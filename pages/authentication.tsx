@@ -1,25 +1,24 @@
 import { MouseEventHandler, MouseEvent, useState, useEffect } from 'react'
 import Layout from '../components/layout'
+import Logger, { LogEntry } from '../components/logger'
+
 import * as Ably from 'ably/promises'
-import { assertConfiguration, configureAbly } from '@ably-labs/react-hooks';
+import { assertConfiguration, configureAbly } from '@ably-labs/react-hooks'
 
 import styles from '../styles/Home.module.css'
 import authStyles from '../styles/Authentication.module.css'
 
-type ConnectionLog = {
-  stateChange: Ably.Types.ConnectionStateChange,
-  timestamp: Date,
-}
-
 export default function Authentication() {
 
-  const [logs, setLogs] = useState<Array<ConnectionLog>>([])
+  const [logs, setLogs] = useState<Array<LogEntry>>([])
   const [connectionState, setConnectionState] = useState('unknown')
 
   useEffect(() => {
     const handleConnectionStateChange = (stateChange: Ably.Types.ConnectionStateChange) => {
       const logsCopy = [...logs]
-      logsCopy.push({stateChange: stateChange, timestamp: new Date()})
+      logsCopy.push(
+        new LogEntry(`Connection state change: ${stateChange.previous} -> ${stateChange.current}`)
+      )
       setLogs(logsCopy)
 
       setConnectionState(stateChange.current)
@@ -58,20 +57,7 @@ export default function Authentication() {
             <button onClick={connectionToggle}>{connectionState === 'connected'? 'Disconnect': 'Connect'}</button>
           </div>
 
-          <ul>
-            {
-              // Show the newest log entry at the top
-              logs.sort((a: ConnectionLog, b: ConnectionLog) => {
-                  return b.timestamp.getTime() - a.timestamp.getTime()
-                }).map(logEntry => {
-                return (
-                  <li key={logEntry.timestamp.toISOString()}>
-                    {logEntry.timestamp.toISOString()}: Connection state change: {logEntry.stateChange.previous} &rarr; {logEntry.stateChange.current}
-                  </li>
-                )}
-              )
-            }
-          </ul>
+          <Logger logEntries={logs} />
         </section>
       </Layout>
   )
