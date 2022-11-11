@@ -1,0 +1,18 @@
+.connection-closed,
+.connection-connecting,
+.connection-connected {
+  border-radius: 20px;
+  padding: 4px 8px;
+}
+
+.connection-connecting {
+  background-color: orange;
+}
+
+.connection-connected {
+  background-color: green;
+}
+
+.connection-closed {
+  background-color: red;
+}

@@ -1,4 +1,4 @@
-# Ably and Next.js template
+# Ably serverless WebSockets and Next.js template
 
 ## Description
 
