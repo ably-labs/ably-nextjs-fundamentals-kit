@@ -1,8 +1,12 @@
 .connection-closed,
 .connection-connecting,
 .connection-connected {
-  border-radius: 20px;
+  display: inline-block;
+  border-radius: 15px;
   padding: 4px 8px;
+  width: 120px;
+  text-align: center;
+  height: 30px;
 }
 
 .connection-connecting {
@@ -15,4 +19,15 @@
 
 .connection-closed {
   background-color: red;
+}
+
+.connection-action {
+  text-align: center;
+}
+
+.connection-action button {
+  border: 0;
+  border-radius: 15px;
+  padding: 4px 8px;
+  height: 30px;
 }
