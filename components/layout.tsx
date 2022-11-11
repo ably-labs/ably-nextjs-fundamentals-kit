@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import styles from '../styles/Layout.module.css'
 
@@ -7,9 +8,10 @@ type LayoutProps = {
   children: React.ReactNode,
   pageTitle?: string,
   metaDescription: string,
+  showHomeLink?: boolean,
 }
 
-export default function Layout({ children, pageTitle, metaDescription }: LayoutProps) {
+export default function Layout({ children, pageTitle, metaDescription, showHomeLink = true }: LayoutProps) {
   const headTitle = (pageTitle? `${pageTitle} - ` : '') + 'Ably and Next.js starter template'
   return (
     <div className={styles.container}>
@@ -19,9 +21,11 @@ export default function Layout({ children, pageTitle, metaDescription }: LayoutP
         <link rel="icon" href="https://static.ably.dev/motif-red.svg?ably-nextjs-template" type="image/svg+xml" />
       </Head>
       <main className={styles.main}>
+
         <h1 className={styles.title}>
           <a href="https://ably.com/?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-template&utm_content=ably-nextjs-template&src=GLB-2211-ably-nextjs-template-github-repo">Ably</a> &amp; <a href="https://nextjs.org">Next.js</a> starter template
         </h1>
+        { showHomeLink && <Link href="/">&larr; Home</Link> }
 
         {pageTitle && <h2>{pageTitle}</h2>}
 

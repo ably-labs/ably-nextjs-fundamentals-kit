@@ -66,7 +66,7 @@ export default function Authentication() {
                 }).map(logEntry => {
                 return (
                   <li key={logEntry.timestamp.toISOString()}>
-                    {logEntry.timestamp.toISOString()}: Connection state change: {logEntry.stateChange.previous} &#8594; {logEntry.stateChange.current}
+                    {logEntry.timestamp.toISOString()}: Connection state change: {logEntry.stateChange.previous} &rarr; {logEntry.stateChange.current}
                   </li>
                 )}
               )

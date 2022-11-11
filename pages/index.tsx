@@ -5,6 +5,7 @@ export default function Home() {
   return (
       <Layout
         metaDescription={"Ably and Next.js template"}
+        showHomeLink={false}
       >
         <p className={styles.description}>
           This template demonstrates using some of the Ably fundamentals with Next.js. You can build features and use cases upon these fundamentals such as notifications, activity streams, chat, realtime visualisations and dashboards, and collaborative multiplayer experiences.
