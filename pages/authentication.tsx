@@ -15,11 +15,8 @@ export default function Authentication() {
 
   useEffect(() => {
     const handleConnectionStateChange = (stateChange: Ably.Types.ConnectionStateChange) => {
-      const logsCopy = [...logs]
-      logsCopy.push(
-        new LogEntry(`Connection state change: ${stateChange.previous} -> ${stateChange.current}`)
-      )
-      setLogs(logsCopy)
+      setLogs(prev => [...prev, new LogEntry(`Connection state change: ${stateChange.previous} -> ${stateChange.current}`)])
+      // setLogs([...logs, new LogEntry(`Connection state change: ${stateChange.previous} -> ${stateChange.current}`)])
 
       setConnectionState(stateChange.current)
     }
@@ -28,7 +25,7 @@ export default function Authentication() {
     ably.connection.on(handleConnectionStateChange)
 
     return () => {ably.connection.off()}
-  })
+  }, []) // Only run on the client
 
   const connectionToggle: MouseEventHandler =  (_event: MouseEvent<HTMLButtonElement>) => {
     const ably = assertConfiguration()
