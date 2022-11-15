@@ -10,7 +10,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
 
-  console.log('/api/authentication called')
+  console.log('/api/authentication/token-auth called')
 
   if (!process.env.ABLY_API_KEY) {
     return res
