@@ -29,7 +29,6 @@ export default function PubSub() {
     setChannel(_channel)
 
     return () => {
-      ably.connection.off()
       _channel.unsubscribe()
     }
   }, []) // Only run the client
