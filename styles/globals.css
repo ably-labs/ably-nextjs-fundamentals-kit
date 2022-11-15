@@ -15,9 +15,20 @@ a {
   box-sizing: border-box;
 }
 
-button {
+h2, h3 {
+  text-align: center;
+}
+
+button, input {
   font-size: 1em;
   cursor: pointer;
+}
+
+button {
+  border: 0;
+  border-radius: 15px;
+  padding: 4px 8px;
+  height: 30px;
 }
 
 @media (prefers-color-scheme: dark) {

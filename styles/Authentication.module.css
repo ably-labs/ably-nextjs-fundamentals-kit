@@ -24,10 +24,6 @@
 }
 
 .connection-action button {
-  border: 0;
-  border-radius: 15px;
-  padding: 4px 8px;
-  height: 30px;
   width: 120px;
 }
 

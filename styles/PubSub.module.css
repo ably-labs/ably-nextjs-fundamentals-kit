@@ -1,0 +1,11 @@
+.publish {
+  min-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.publish input, .publish button {
+  margin: 1rem 1rem;
+}
