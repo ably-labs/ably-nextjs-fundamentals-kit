@@ -1,6 +1,4 @@
-.connection-closed,
-.connection-connecting,
-.connection-connected {
+.label {
   display: inline-block;
   border-radius: 15px;
   padding: 4px 8px;
@@ -9,15 +7,15 @@
   height: 30px;
 }
 
-.connection-connecting {
+.connection-connecting .label {
   background-color: orange;
 }
 
-.connection-connected {
+.connection-connected .label {
   background-color: green;
 }
 
-.connection-closed {
+.connection-closed .label {
   background-color: red;
 }
 
@@ -30,4 +28,13 @@
   border-radius: 15px;
   padding: 4px 8px;
   height: 30px;
+  width: 120px;
+}
+
+.connection-closed button::after {
+  content: ' ⚡️';
+}
+
+.connection-connected button::after {
+  content: ' 🚫';
 }

@@ -47,8 +47,8 @@ export default function Authentication() {
           Authenticate and establish a persistent bi-direction connection to the Ably platform.
         </p>
 
-        <section>
-          <h3>Connection status: <span className={authStyles[`connection-${connectionState}`]}>{connectionState}</span></h3>
+        <section className={authStyles[`connection-${connectionState}`]}>
+          <h3>Connection status: <span className={authStyles.label}>{connectionState}</span></h3>
           
           <div className={authStyles['connection-action']}>
             <button onClick={connectionToggle}>{connectionState === 'connected'? 'Disconnect': 'Connect'}</button>
