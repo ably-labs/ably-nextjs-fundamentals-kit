@@ -20,10 +20,12 @@ export default function Authentication() {
       setConnectionState(stateChange.current)
     }
 
-    const ably = configureAbly({ authUrl: '/api/authentication/token-auth' })
+    const ably: Ably.Types.RealtimePromise = configureAbly({ authUrl: '/api/authentication/token-auth' })
     ably.connection.on(handleConnectionStateChange)
 
-    return () => {ably.connection.off()}
+    return () => {
+      ably.connection.off()
+    }
   }, []) // Only run the client
 
   const connectionToggle: MouseEventHandler =  (_event: MouseEvent<HTMLButtonElement>) => {
