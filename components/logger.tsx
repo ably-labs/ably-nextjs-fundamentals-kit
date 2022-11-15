@@ -19,9 +19,9 @@ export default function Logger({ logEntries }: LoggingProps) {
       // Show the newest log entry at the top
       logEntries.sort((a: LogEntry, b: LogEntry) => {
           return b.timestamp.getTime() - a.timestamp.getTime()
-        }).map((logEntry: LogEntry) => {
+        }).map((logEntry: LogEntry, index: number) => {
         return (
-          <li key={logEntry.timestamp.toISOString()}>
+          <li key={index}>
             {logEntry.timestamp.toISOString()}: {logEntry.message}
           </li>
         )}
