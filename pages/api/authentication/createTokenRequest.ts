@@ -1,17 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-
+import type { NextApiRequest, NextApiResponse } from 'next';
 import * as dotenv from "dotenv";
 import * as Ably from "ably/promises";
 
 dotenv.config();
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-
-  console.log('/api/authentication/token-auth called')
-
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!process.env.ABLY_API_KEY) {
     return res
             .status(500)

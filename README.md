@@ -28,7 +28,7 @@ The project uses the following components:
 Create a `.env.local` file with your Ably API key:
 
 ```bash
-echo "ABLY_API_KEY={YOUR_ABLY_API_KEY_HERE}">.env
+echo "ABLY_API_KEY={YOUR_ABLY_API_KEY_HERE}" > .env.local
 ```
 
 ### Run the Next.js app
