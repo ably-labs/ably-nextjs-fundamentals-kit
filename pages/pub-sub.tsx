@@ -1,10 +1,10 @@
 import { MouseEventHandler, MouseEvent, useEffect, useState, useCallback } from 'react'
-import Logger, { LogEntry } from '../components/logger'
 
 import * as Ably from 'ably/promises'
 import { configureAbly } from '@ably-labs/react-hooks'
 
 import Layout from '../components/layout'
+import Logger, { LogEntry } from '../components/logger'
 
 import homeStyles from '../styles/Home.module.css'
 import styles from '../styles/PubSub.module.css'
