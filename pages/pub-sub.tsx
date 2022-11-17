@@ -1,4 +1,4 @@
-import { MouseEventHandler, MouseEvent, useEffect, useState, useCallback } from 'react'
+import { MouseEventHandler, MouseEvent, useEffect, useState } from 'react'
 
 import * as Ably from 'ably/promises'
 import { configureAbly } from '@ably-labs/react-hooks'

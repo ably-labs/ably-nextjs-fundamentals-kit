@@ -1,26 +1,26 @@
-# Ably serverless WebSockets and Next.js template
+# Ably serverless WebSockets and Next.js fundamentals
 
 ## Description
 
-This [Ably](https://ably.com?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-template&utm_content=ably-nextjs-template&src=GLB-2211-ably-nextjs-template-github-repo) and [Next.js](https://nextjs.org) template demonstrates using some of the Ably fundamentals with Next.js. You can build features and use cases upon these fundamentals such as notifications, activity streams, chat, realtime visualisations and dashboards, and collaborative multiplayer experiences.
+This [Ably](https://ably.com?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals&utm_content=ably-nextjs-fundamentals&src=GLB-2211-ably-nextjs-fundamentals-github-repo) and [Next.js](https://nextjs.org) fundamentals demonstrates using some of the Ably's core functionality with Next.js. You can build features and use cases upon these fundamentals such as notifications, activity streams, chat, realtime visualisations and dashboards, and collaborative multiplayer experiences.
 
-The Ably fundamentals demonstrated within this template are:
+The Ably fundamentals demonstrated within this repo are:
 
-- [Token Authentication](https://ably.com/docs/realtime/authentication?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-template&utm_content=ably-nextjs-template&src=GLB-2211-ably-nextjs-template-github-repo#token-authentication) - authenticate and establish a persistent bi-direction connection to the Ably platform.
-- [Pub/Sub (Publish/Subscribe)](https://ably.com/docs/realtime/channels?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-template&utm_content=ably-nextjs-template&src=GLB-2211-ably-nextjs-template-github-repo) - publish messages on channels and subscribe to channels to receive messages.
-- [Presence](https://ably.com/docs/realtime/presence?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-template&utm_content=ably-nextjs-template&src=GLB-2211-ably-nextjs-template-github-repo) - keep track of devices that are present on a channel. This is great for tracking if a device is online or offline or indicating if a user is in a chat room when using Ably for Chat.
-- [History](https://ably.com/docs/realtime/history?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-template&utm_content=ably-nextjs-template&src=GLB-2211-ably-nextjs-template-github-repo) - Retrieve a history of messages that have been published to a channel.
+- [Token Authentication](https://ably.com/docs/realtime/authentication?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals&utm_content=ably-nextjs-fundamentals&src=GLB-2211-ably-nextjs-fundamentals-github-repo#token-authentication) - authenticate and establish a persistent bi-direction connection to the Ably platform.
+- [Pub/Sub (Publish/Subscribe)](https://ably.com/docs/realtime/channels?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals&utm_content=ably-nextjs-fundamentals&src=GLB-2211-ably-nextjs-fundamentals-github-repo) - publish messages on channels and subscribe to channels to receive messages.
+- [Presence](https://ably.com/docs/realtime/presence?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals&utm_content=ably-nextjs-fundamentals&src=GLB-2211-ably-nextjs-fundamentals-github-repo) - keep track of devices that are present on a channel. This is great for tracking if a device is online or offline or indicating if a user is in a chat room when using Ably for Chat.
+- [History](https://ably.com/docs/realtime/history?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals&utm_content=ably-nextjs-fundamentals&src=GLB-2211-ably-nextjs-fundamentals-github-repo) - Retrieve a history of messages that have been published to a channel.
 
 The project uses the following components:
 
 - [Next.js](https://nextjs.org), a flexible React framework that gives you building blocks to create fast web applications.
-- [Ably](https://ably.com?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-template&utm_content=ably-nextjs-template&src=GLB-2211-ably-nextjs-template-github-repo), for realtime messaging at scale.
+- [Ably](https://ably.com?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals&utm_content=ably-nextjs-fundamentals&src=GLB-2211-ably-nextjs-fundamentals-github-repo), for realtime messaging at scale.
 
 ## Building & running locally
 
 ### Prerequisites
 
-1. [Sign up](https://ably.com/signup?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-template&utm_content=ably-nextjs-template&src=GLB-2211-ably-nextjs-template-github-repo) or [log in](https://ably.com/login?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-template&utm_content=ably-nextjs-template&src=GLB-2211-ably-nextjs-template-github-repo) to ably.com, and [create a new app and copy the API key](https://faqs.ably.com/setting-up-and-managing-api-keys?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-template&utm_content=ably-nextjs-template&src=GLB-2211-ably-nextjs-template-github-repo).
+1. [Sign up](https://ably.com/signup?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals&utm_content=ably-nextjs-fundamentals&src=GLB-2211-ably-nextjs-fundamentals-github-repo) or [log in](https://ably.com/login?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals&utm_content=ably-nextjs-fundamentals&src=GLB-2211-ably-nextjs-fundamentals-github-repo) to ably.com, and [create a new app and copy the API key](https://faqs.ably.com/setting-up-and-managing-api-keys?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals&utm_content=ably-nextjs-fundamentals&src=GLB-2211-ably-nextjs-fundamentals-github-repo).
 2. To deploy to [Vercel](https://vercel.com), create a Vercel account.
 
 ### Configure the app
@@ -43,7 +43,7 @@ yarn dev
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fably-labs%2Fably-nextjs-template&env=ABLY_API_KEY)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fably-labs%2Fably-nextjs-fundamentals&env=ABLY_API_KEY)
 
 ## Contributing
 
@@ -54,7 +54,7 @@ Want to help contributing to this project? Have a look at our [contributing guid
 - [Join the Ably Discord server](https://discord.gg/q89gDHZcBK)
 - [Follow Ably on Twitter](https://twitter.com/ablyrealtime)
 - [Use the Ably SDKs](https://github.com/ably/)
-- [Visit the Ably website](https://ably.com?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-template&utm_content=ably-nextjs-template&src=GLB-2211-ably-nextjs-template-github-repo)
+- [Visit the Ably website](https://ably.com?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals&utm_content=ably-nextjs-fundamentals&src=GLB-2211-ably-nextjs-fundamentals-github-repo)
 
 ## TODO
 
@@ -72,4 +72,4 @@ Want to help contributing to this project? Have a look at our [contributing guid
 9. Add this repository to the [selected repositories in the Ably Labs org](https://github.com/organizations/ably-labs/settings/actions) that are allowed to run GitHub Actions.
 
 ---
-[![Ably logo](https://static.ably.dev/badge-black.svg?ably-nextjs-template-github-repo)](https://ably.com?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-template&utm_content=ably-nextjs-template&src=GLB-2211-ably-nextjs-template-github-repo)
+[![Ably logo](https://static.ably.dev/badge-black.svg?ably-nextjs-fundamentals-github-repo)](https://ably.com?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals&utm_content=ably-nextjs-fundamentals&src=GLB-2211-ably-nextjs-fundamentals-github-repo)
