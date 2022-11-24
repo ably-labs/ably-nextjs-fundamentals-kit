@@ -1,20 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import * as dotenv from "dotenv";
-import * as Ably from "ably/promises";
+import * as dotenv from "dotenv"
+import * as Ably from "ably/promises"
 
-dotenv.config();
-
-const disallowedWords = [
-  'foo',
-  'bar',
-  'fizz',
-  'buzz'
-]
-
-type Message = {
-  text: string,
-}
+dotenv.config()
 
 export default async function handler(
   req: NextApiRequest,
@@ -35,30 +24,23 @@ export default async function handler(
             })
     }
 
-  const clientId = req.body["clientId"] || process.env.DEFAULT_CLIENT_ID || "NO_CLIENT_ID";
-  const client = new Ably.Rest(process.env.ABLY_API_KEY);
-  const tokenRequestData = await client.auth.createTokenRequest({ clientId: clientId });
+  const client = new Ably.Rest(process.env.ABLY_API_KEY)
 
-  var channel = client.channels.get('status-updates');
-  const message: Message = req.body
+  var channel = client.channels.get('status-updates')
+  const message: { text: string } = req.body
 
   // By publishing via the serverless function you can perform
   // checks in a trusted environment on the data being published
+  const disallowedWords = [ 'foo', 'bar', 'fizz', 'buzz' ]
+
   const containsDisallowedWord = disallowedWords.some(word => {
     return message.text.match(new RegExp(`\\b${word}\\b`))
   })
 
   if(containsDisallowedWord) {
-    return res.status(403).json({errorMessage: 'text content not accepted'})
+    return res.status(403)
   }
 
-  try {
-    await channel.publish('update-from-server', message)
-
-    return res.status(200).json(tokenRequestData)
-  }
-  catch (e) {
-    console.error(e)
-    return res.status(500).json({errorMessage: 'Error publishing from server'})
-  }
+  await channel.publish('update-from-server', message)
+  return res.status(200)
 }
