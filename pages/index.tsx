@@ -22,20 +22,12 @@ export default function Home() {
             <p>Pub/Sub (Publish/Subscribe) with Ably lets you publish messages on channels and subscribe to channels to receive messages.</p>
           </a>
 
-          <a
-            href="./presence"
-            className={styles.card}
-          >
+          <a href="./presence" className={styles.card}>
             <h2>Presence &rarr;</h2>
             <p>Presence with Ably allows you to keep track of devices that are present on a channel. This is great for tracking if a device is online or offline or indicating if a user is in a chat room when using Ably for Chat.</p>
           </a>
 
-          <a
-            href="./history"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
+          <a href="./history" className={styles.card}>
             <h2>History &rarr;</h2>
             <p>
               Retrieve a history of messages that have been published to a channel.
