@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   return (
       <Layout
-        metaDescription={"Ably and Next.js fundamentals"}
+        metaDescription={"Ably and Next.js starter kit"}
         showHomeLink={false}
       >
         <p className={styles.description}>
