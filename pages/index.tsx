@@ -4,11 +4,11 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   return (
       <Layout
-        metaDescription={"Ably and Next.js template"}
+        metaDescription={"Ably and Next.js starter kit"}
         showHomeLink={false}
       >
         <p className={styles.description}>
-          This template demonstrates using some of the Ably fundamentals with Next.js. You can build features and use cases upon these fundamentals such as notifications, activity streams, chat, realtime visualisations and dashboards, and collaborative multiplayer experiences.
+          This application demonstrates using some of the Ably fundamentals with Next.js. You can build features and use cases upon these fundamentals such as notifications, activity streams, chat, realtime visualisations and dashboards, and collaborative multiplayer experiences.
         </p>
 
         <div className={styles.grid}>
