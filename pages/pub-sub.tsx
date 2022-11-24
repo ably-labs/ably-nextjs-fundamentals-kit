@@ -33,13 +33,13 @@ export default function PubSub() {
     }
   }, []) // Only run the client
 
-  const publicFromClientHandler: MouseEventHandler =  (_event: MouseEvent<HTMLButtonElement>) => {
+  const publicFromClientHandler: MouseEventHandler = (_event: MouseEvent<HTMLButtonElement>) => {
     if(channel === null) return
 
     channel.publish('update-from-client', {text: `${messageText} @ ${new Date().toISOString()}`})
   }
 
-  const publicFromServerHandler: MouseEventHandler =  (_event: MouseEvent<HTMLButtonElement>) => {
+  const publicFromServerHandler: MouseEventHandler = (_event: MouseEvent<HTMLButtonElement>) => {
     fetch('/api/pub-sub/publish', {
       'method': 'POST',
       'headers': {
