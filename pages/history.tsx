@@ -82,7 +82,7 @@ export default function History() {
             realtimeLogs.length > 0?
             <Logger logEntries={realtimeLogs} />
             :
-            <p>No reatime messages received yet</p>
+            <p>No realtime messages received yet</p>
           }
         </section>
       </Layout>
