@@ -35,7 +35,6 @@ export default function History() {
     const getHistory = async () => {
       const history: Ably.Types.PaginatedResult<Message> = await channel.history()
       do {
-        console.log(history.items)
         history.items.forEach(message => {
           setHistoricalLogs(prev => [
             ...prev,
