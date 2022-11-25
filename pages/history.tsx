@@ -64,7 +64,7 @@ export default function History() {
           Publish messages via the <a href="/pub-sub" target="_blank">Pub/Sub example</a>
         </p>
         <p className={styles.info}>
-          Messages are only stored for 2 minutes by default. In order for them to be stored for longer you should enable the <b>Persist all messages</b> <a href="https://ably.com/docs/general/channel-rules-namespaces?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-starter-kit&utm_content=ably-nextjs-starter-kit&src=GLB-2211-ably-nextjs-starter-kit-github-repo" target="_blank" rel="noreferrer">channel rule</a> for the <b>status-updates</b> channel in your Ably app.
+          Messages are only stored for 2 minutes by default. In order for them to be stored for longer you should enable the <b>Persist all messages</b> <a href="https://ably.com/docs/general/channel-rules-namespaces?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals-kit&utm_content=ably-nextjs-fundamentals-kit&src=GLB-2211-ably-nextjs-fundamentals-kit-github-repo" target="_blank" rel="noreferrer">channel rule</a> for the <b>status-updates</b> channel in your Ably app.
         </p>
         <section>
           <h3>History</h3>
