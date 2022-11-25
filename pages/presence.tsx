@@ -109,8 +109,6 @@ export default function Presence() {
   const handleLeaveClick = async (_event: MouseEvent<HTMLButtonElement>) => {
     await channel?.presence.leave()
     channel?.presence.unsubscribe()
-    
-     // TODO: will this trigger the above two calls under the hood?
     channel?.unsubscribe()
 
     setChannel(null)
