@@ -12,7 +12,7 @@ type LayoutProps = {
 }
 
 export default function Layout({ children, pageTitle, metaDescription, showHomeLink = true }: LayoutProps) {
-  const headTitle = (pageTitle? `${pageTitle} - ` : '') + 'Ably and Next.js starter kit'
+  const headTitle = (pageTitle? `${pageTitle} - ` : '') + 'Ably and Next.js fundamentals starter kit'
   return (
     <div className={styles.container}>
       <Head>
