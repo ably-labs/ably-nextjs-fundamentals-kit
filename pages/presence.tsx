@@ -111,6 +111,11 @@ export default function Presence() {
     channel?.presence.unsubscribe()
     channel?.unsubscribe()
 
+    // Clear the online users state
+    // While subscribed to the channel, enter and leave events will update the state
+    // But once unsubscribed we will not receive events to the state will become stale
+    setOnlineUsers([])
+    
     setChannel(null)
     setIsUsernameValid(false)
   }
@@ -122,6 +127,9 @@ export default function Presence() {
       >
         <p className={homeStyles.description}>
           Presence with Ably allows you to keep track of devices that are present on a channel. This is great for tracking if a device is online or offline or indicating if a user is in a chat room when using Ably for Chat.
+        </p>
+        <p className={homeStyles.info}>
+          <a href="/presence" target="_blank">Open this page</a> in another tab to see more users enter and leave the presence channel.
         </p>
         { isUsernameValid === false?
         <section className={styles.presence}>
