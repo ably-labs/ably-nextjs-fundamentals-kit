@@ -56,11 +56,5 @@ Want to help contributing to this project? Have a look at our [contributing guid
 - [Use the Ably SDKs](https://github.com/ably/)
 - [Visit the Ably website](https://ably.com?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals-kit&utm_content=ably-nextjs-fundamentals-kit&src=GLB-2211-ably-nextjs-fundamentals-kit-github-repo)
 
-## TODO
-
-4. Update [dependabot.yml](.github/dependabot.yml) with the [configuration for your project](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates).
-8. Add a GitHub workflow to build/test/deploy your application. Use the [Ably Control API GitHub action](https://github.com/ably-labs/ably-control-api-action) to avoid creating Ably apps/API keys manually (see the `create-infra.yml` workflow in this repo).
-9. Add this repository to the [selected repositories in the Ably Labs org](https://github.com/organizations/ably-labs/settings/actions) that are allowed to run GitHub Actions.
-
 ---
 [![Ably logo](https://static.ably.dev/badge-black.svg?ably-nextjs-fundamentals-kit-github-repo)](https://ably.com?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals-kit&utm_content=ably-nextjs-fundamentals-kit&src=GLB-2211-ably-nextjs-fundamentals-kit-github-repo)
