@@ -69,10 +69,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .footer {
+  .card {
     border-color: #222;
-  }
-  .code {
-    background: #111;
   }
 }
