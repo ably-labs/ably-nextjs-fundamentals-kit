@@ -33,7 +33,7 @@ export default function History() {
     })
 
     const getHistory = async () => {
-      const history: Ably.Types.PaginatedResult<Message> = await channel.history()
+      let history: Ably.Types.PaginatedResult<Message> = await channel.history()
       do {
         history.items.forEach(message => {
           setHistoricalLogs(prev => [
@@ -41,8 +41,9 @@ export default function History() {
             new LogEntry(`"${message.data.text}" sent at ${new Date(message.timestamp).toISOString()}`)
           ])
         })
+        history = await history.next()
       }
-      while(await history.next())
+      while(history)
     }
     getHistory()
 
