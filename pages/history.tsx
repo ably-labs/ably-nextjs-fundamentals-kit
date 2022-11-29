@@ -42,7 +42,6 @@ export default function History() {
           ])
         })
         history = await history.next()
-        console.log(history)
       }
       while(history)
     }
