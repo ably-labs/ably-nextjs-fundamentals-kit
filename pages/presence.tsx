@@ -88,14 +88,6 @@ export default function Presence() {
     }
   }, [isUsernameValid, ably, channel, username, onlineUsers, handlePresenceMessage])
 
-  // Very basic validation
-  const validateUsername = (username: string) => {
-    if(username.length < 2) {
-      return false
-    }
-    return true
-  }
-
   const handleUsernameInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value)
   }
@@ -103,7 +95,7 @@ export default function Presence() {
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault()
 
-    setIsUsernameValid(validateUsername(username))
+    setIsUsernameValid(true)
   }
 
   const handleLeaveClick = async (_event: MouseEvent<HTMLButtonElement>) => {
@@ -138,8 +130,10 @@ export default function Presence() {
             <input
               type="text" 
               key="username"
-              value={username} 
+              value={username}
               placeholder="What is your username?"
+              required
+              minLength={2}
               onChange={handleUsernameInputChange}
             />
             <button>Join</button>
