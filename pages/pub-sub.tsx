@@ -33,13 +33,13 @@ export default function PubSub() {
     }
   }, []) // Only run the client
 
-  const publicFromClientHandler: MouseEventHandler = (_event: MouseEvent<HTMLButtonElement>) => {
+  const publishFromClientHandler: MouseEventHandler = (_event: MouseEvent<HTMLButtonElement>) => {
     if(channel === null) return
 
     channel.publish('update-from-client', {text: `${messageText} @ ${new Date().toISOString()}`})
   }
 
-  const publicFromServerHandler: MouseEventHandler = (_event: MouseEvent<HTMLButtonElement>) => {
+  const publishFromServerHandler: MouseEventHandler = (_event: MouseEvent<HTMLButtonElement>) => {
     fetch('/api/pub-sub/publish', {
       'method': 'POST',
       'headers': {
@@ -55,7 +55,7 @@ export default function PubSub() {
         metaDescription="Ably PubSub with Next.js"
       >
         <p className={homeStyles.description}>
-          Publish messages on channels and subscribe to channels to receive messages. Click the <b>Public from the client</b> to publish a message on a channel from the web browser client. Click the <b>Public from the server</b> to publish a message from a serverless function.
+          Publish messages on channels and subscribe to channels to receive messages. Click the <b>Publish from the client</b> to publish a message on a channel from the web browser client. Click the <b>Publish from the server</b> to publish a message from a serverless function.
         </p>
 
         <section className={styles.publish}>
@@ -65,8 +65,8 @@ export default function PubSub() {
             <input type="text" placeholder="message to publish" value={messageText} onChange={e => setMessageText(e.target.value)} />
           </div>
           <div>
-            <button onClick={publicFromClientHandler}>Publish from client</button>
-            <button onClick={publicFromServerHandler}>Publish from server</button>
+            <button onClick={publishFromClientHandler}>Publish from client</button>
+            <button onClick={publishFromServerHandler}>Publish from server</button>
           </div>
         </section>
 
