@@ -21,7 +21,7 @@ export default function Logger({ logEntries }: LoggingProps) {
           return b.timestamp.getTime() - a.timestamp.getTime()
         }).map((logEntry: LogEntry, index: number) => {
         return (
-          <li key={index}>
+          <li className="block mb-2 text-sm font-medium text-gray-900" key={index}>
             {logEntry.timestamp.toISOString()}: {logEntry.message}
           </li>
         )}
