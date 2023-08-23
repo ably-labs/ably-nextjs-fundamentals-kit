@@ -13,9 +13,21 @@ export default function History() {
      }
   
   return (
-      <AblyProvider options={options}>
-          <HistoryMessages />
-      </AblyProvider>
+    <div className="container mx-auto">
+      <header>
+        <NavBar />
+      </header>
+      <section className="bg-white">
+        <div className="py-8 px-4 mx-auto max-w-screen-xl">
+          <p className="mb-8 text-sm font-normal text-gray-500 text-center">
+          Retrieve a history of messages that have been published to a channel. Publish messages via the <a href="/pub-sub" target="_blank">Pub/Sub example</a> Messages are only stored for 2 minutes by default. In order for them to be stored for longer you should enable the <b>Persist all messages</b> <a href="https://ably.com/docs/general/channel-rules-namespaces?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals-kit&utm_content=ably-nextjs-fundamentals-kit&src=GLB-2211-ably-nextjs-fundamentals-kit-github-repo" target="_blank" rel="noreferrer">channel rule</a> for the <b>status-updates</b> channel in your Ably app.
+          </p>
+          <AblyProvider options={options}>
+              <HistoryMessages />
+          </AblyProvider>
+        </div>
+      </section>
+    </div>    
   )
 }
 
@@ -47,38 +59,25 @@ function HistoryMessages() {
   }, [])
   
   return (
-    <div className="container mx-auto">
-    <header>
-      <NavBar />
-    </header>
-    <section className="bg-white">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl">
-        <p className="mb-8 text-sm font-normal text-gray-500 text-center">
-        Retrieve a history of messages that have been published to a channel. Publish messages via the <a href="/pub-sub" target="_blank">Pub/Sub example</a> Messages are only stored for 2 minutes by default. In order for them to be stored for longer you should enable the <b>Persist all messages</b> <a href="https://ably.com/docs/general/channel-rules-namespaces?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals-kit&utm_content=ably-nextjs-fundamentals-kit&src=GLB-2211-ably-nextjs-fundamentals-kit-github-repo" target="_blank" rel="noreferrer">channel rule</a> for the <b>status-updates</b> channel in your Ably app.
-        </p>
-        <div className="p-5">
-          <section>
-            <h3>History</h3>
-              {
-                historicalLogs.length > 0?
-                <Logger logEntries={historicalLogs} />
-                :
-                <p>No historical messages found</p>
-              }
-          </section>
-          <section>
-            <h3>Realtime</h3>
-            {
-              realtimeLogs.length > 0?
-              <Logger logEntries={realtimeLogs} />
-              :
-              <p>No realtime messages received yet</p>
-            }
-          </section>
-        </div>
-      </div>
-    </section>
-  </div>    
-  
+    <div className="p-5">
+      <section>
+        <h3>History</h3>
+          {
+            historicalLogs.length > 0?
+            <Logger logEntries={historicalLogs} />
+            :
+            <p>No historical messages found</p>
+          }
+      </section>
+      <section>
+        <h3>Realtime</h3>
+        {
+          realtimeLogs.length > 0?
+          <Logger logEntries={realtimeLogs} />
+          :
+          <p>No realtime messages received yet</p>
+        }
+      </section>
+    </div>
   )
 }
