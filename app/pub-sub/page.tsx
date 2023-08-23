@@ -9,10 +9,6 @@ import NavBar from '../../components/navbar';
 
 export default function PubSub() {
 
-    const options = {
-        authUrl:'/api/authentication/token-auth'
-       }
-    
     return (
       <div className="container mx-auto">
       <header>
@@ -23,7 +19,7 @@ export default function PubSub() {
           <p className="mb-8 text-sm font-normal text-gray-500 text-center">
             Publish messages on channels and subscribe to channels to receive messages. Click the <b>Publish from the client</b> to publish a message on a channel from the web browser client. Click the <b>Public from the server</b> to publish a message from a serverless function.
           </p>
-          <AblyProvider options={options}>
+          <AblyProvider options={{ authUrl:'/api/authentication/token-auth' }}>
               <PubSubMessages />
           </AblyProvider> 
         </div>

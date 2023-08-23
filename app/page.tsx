@@ -18,8 +18,8 @@ export default function Home() {
               <img className="m-6" src="https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png" height="128" width="128" alt="Next.js logo" />
             </div>
           </div>     
-
-          <h1 className="mb-4 text-5xl font-extrabold tracking-tight leading-none text-gray-900">Ably hearts Next.js</h1>
+          
+          <h1 className="mb-4 text-5xl font-extrabold tracking-tight leading-none text-gray-900">Ably ♥s Next.js</h1>
           <p className="mb-8 text-lg font-normal text-gray-500">At Ably we are big fans of Next.js. This application demonstrates using some of the Ably fundamentals with Next.js. You can build features and use cases upon these fundamentals such as notifications, activity streams, chat, realtime visualisations and dashboards, and collaborative multiplayer experiences.</p>
 
           <div className="grid grid-cols-4">
