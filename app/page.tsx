@@ -25,9 +25,9 @@ export default function Home() {
           <div className="grid grid-cols-4">
 
             <div className="justify-center">
-              <a className="inline-flex items-center" href="./authentication">
+              {/* <a className="inline-flex items-center" href="./authentication">
                 <img height="50" width="50" />
-              </a>
+              </a> */}
               <a className="items-center text-base font-medium text-center text-gray-900" href="./authentication">
                 <h2>Token Authentication</h2>            
               </a>
@@ -35,9 +35,9 @@ export default function Home() {
             </div>
             
             <div className="justify-center">
-              <a className="inline-flex items-center" href="./pub-sub">
+              {/* <a className="inline-flex items-center" href="./pub-sub">
                 <img height="50" width="50" />
-              </a>
+              </a> */}
               <a className="items-center text-base font-medium text-center text-gray-900" href="./pub-sub">
                 <h2>Pub/Sub</h2>
               </a>
@@ -45,9 +45,9 @@ export default function Home() {
             </div>
 
             <div className="justify-center">
-              <a className="inline-flex items-center" href="./presence">
+              {/* <a className="inline-flex items-center" href="./presence">
                 <img height="50" width="50" />
-              </a>
+              </a> */}
               <a className="items-center text-base font-medium text-center text-gray-900" href="./presence">
                 <h2>Presence</h2>
               </a>
@@ -55,9 +55,9 @@ export default function Home() {
             </div>
 
             <div className="justify-center">
-              <a className="inline-flex items-center" href="./history">
+              {/* <a className="inline-flex items-center" href="./history">
                 <img height="50" width="50" />
-              </a>
+              </a> */}
               <a className="items-center text-base font-medium text-center text-gray-900" href="./history">
                 <h2>History</h2>
               </a>
@@ -67,14 +67,14 @@ export default function Home() {
         </div>
     </section>
       <footer className="footer">
-        Powered by{' '}
+        <p className="mb-8 text-sm font-normal text-white">
+        Powered by
         <span className="logo">
           <a
             href="https://ably.com/?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals-kit&utm_content=ably-nextjs-fundamentals-kit&src=GLB-2211-ably-nextjs-fundamentals-kit-github-repo"
             target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image src="https://static.ably.dev/logo-h-mono-black.svg?ably-nextjs-fundamentals-kit" alt="Ably Logo" width={102} height={18} />
+            rel="noopener noreferrer">
+            <Image src="https://static.ably.dev/logo-h-mono-white.svg?ably-nextjs-fundamentals-kit" alt="Ably Logo" width={102} height={18} />
           </a>
         </span>
         &amp;
@@ -82,11 +82,11 @@ export default function Home() {
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=ably-nextjs-fundamentals-kit&utm_campaign=create-next-app"
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             <Image src="/vercel.svg" alt="Vercel Logo" width={100} height={16} />
           </a>
         </span>
+        </p>
       </footer>
     </div>
   )
