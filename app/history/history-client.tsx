@@ -18,7 +18,7 @@ export default function History() {
           <p className="mb-8 text-sm font-normal text-gray-500 text-center">
           Retrieve a history of messages that have been published to a channel. Publish messages via the <a href="/pub-sub" target="_blank">Pub/Sub example</a> Messages are only stored for 2 minutes by default. In order for them to be stored for longer you should enable the <b>Persist all messages</b> <a href="https://ably.com/docs/general/channel-rules-namespaces?utm_source=github&utm_medium=github-repo&utm_campaign=GLB-2211-ably-nextjs-fundamentals-kit&utm_content=ably-nextjs-fundamentals-kit&src=GLB-2211-ably-nextjs-fundamentals-kit-github-repo" target="_blank" rel="noreferrer">channel rule</a> for the <b>status-updates</b> channel in your Ably app.
           </p>
-          <AblyProvider options={{ authUrl:'/api/authentication/token-auth' }}>
+          <AblyProvider options={{ authUrl:'/token', authMethod: 'POST' }}>
               <HistoryMessages />
           </AblyProvider>
         </div>

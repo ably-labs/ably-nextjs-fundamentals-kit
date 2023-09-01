@@ -19,7 +19,7 @@ export default function PubSub() {
           <p className="mb-8 text-sm font-normal text-gray-500 text-center">
             Publish messages on channels and subscribe to channels to receive messages. Click the <b>Publish from the client</b> to publish a message on a channel from the web browser client. Click the <b>Public from the server</b> to publish a message from a serverless function.
           </p>
-          <AblyProvider options={{ authUrl:'/api/authentication/token-auth' }}>
+          <AblyProvider options={{ authUrl:'/token', authMethod: 'POST'}}>
               <PubSubMessages />
           </AblyProvider> 
         </div>
@@ -42,7 +42,7 @@ function PubSubMessages() {
    }
 
     const publicFromServerHandler: MouseEventHandler = (_event: MouseEvent<HTMLButtonElement>) => {
-        fetch('/api/pub-sub/publish', {
+        fetch('/publish', {
             'method': 'POST',
             'headers': {
                 'content-type': 'application/json',

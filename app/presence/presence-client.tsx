@@ -58,7 +58,7 @@ const PresenceMessages: FC<PresenceMessageProps> = ({ clientId, stateChanger }):
     if (clientId === null) return;
     client.auth.authorize(
       { clientId: clientId },
-      { authUrl:'/api/authentication/token-auth', authMethod: 'POST' }
+      { authUrl:'/token', authMethod: 'POST' }
     );
     return () => {
       console.log(`Unmounting Functional Component`)

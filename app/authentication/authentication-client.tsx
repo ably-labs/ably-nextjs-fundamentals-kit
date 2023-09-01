@@ -19,7 +19,7 @@ export default function Authentication() {
           <p className="mb-8 text-sm font-normal text-gray-500 text-center">
           Authenticate and establish a persistent bi-direction connection to the Ably platform.
           </p>
-          <AblyProvider options={{ authUrl:'/api/authentication/token-auth' }}>
+          <AblyProvider options={{ authUrl:'/token', authMethod: 'POST' }}>
               <ConnectionStatus />
           </AblyProvider>
         </div>
@@ -34,7 +34,6 @@ const ConnectionStatus = () => {
   
   const [logs, setLogs] = useState<Array<LogEntry>>([])
   const [connectionState, setConnectionState] = useState('unknown')
-
 
   useConnectionStateListener((stateChange) => {
     setConnectionState(stateChange.current)
