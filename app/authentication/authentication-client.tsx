@@ -3,12 +3,15 @@
 
 import { MouseEventHandler, MouseEvent, useState, useEffect } from 'react'
 
-import * as Ably from 'ably/promises'
+import * as Ably from 'ably'
 import Logger, { LogEntry } from '../../components/logger'
 import NavBar from '../../components/navbar'
-import { AblyProvider, useAbly, useConnectionStateListener } from '@ably-labs/react-hooks'
+import { AblyProvider, useAbly, useConnectionStateListener } from 'ably/react'
 
 export default function Authentication() {
+
+  const client = new Ably.Realtime.Promise ({ authUrl: '/token', authMethod: 'POST' });
+
   return (
     <div className="container mx-auto">
       <header>
@@ -19,7 +22,7 @@ export default function Authentication() {
           <p className="mb-8 text-sm font-normal text-gray-500 text-center">
           Authenticate and establish a persistent bi-direction connection to the Ably platform.
           </p>
-          <AblyProvider options={{ authUrl:'/token', authMethod: 'POST' }}>
+          <AblyProvider client={ client }>
               <ConnectionStatus />
           </AblyProvider>
         </div>

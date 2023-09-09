@@ -1,13 +1,15 @@
 'use client'
 
 import * as Ably from 'ably';
-import { AblyProvider, useChannel } from "@ably-labs/react-hooks"
+import { AblyProvider, useChannel } from "ably/react"
 import { MouseEventHandler, MouseEvent, useState } from 'react'
 
 import Logger, { LogEntry } from '../../components/logger';
 import NavBar from '../../components/navbar';
 
 export default function PubSub() {
+
+  const client = new Ably.Realtime.Promise ({ authUrl: '/token', authMethod: 'POST' });
 
     return (
       <div className="container mx-auto">
@@ -19,7 +21,7 @@ export default function PubSub() {
           <p className="mb-8 text-sm font-normal text-gray-500 text-center">
             Publish messages on channels and subscribe to channels to receive messages. Click the <b>Publish from the client</b> to publish a message on a channel from the web browser client. Click the <b>Public from the server</b> to publish a message from a serverless function.
           </p>
-          <AblyProvider options={{ authUrl:'/token', authMethod: 'POST'}}>
+          <AblyProvider client={ client }>
               <PubSubMessages />
           </AblyProvider> 
         </div>

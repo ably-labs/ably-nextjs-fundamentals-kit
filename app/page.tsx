@@ -25,9 +25,6 @@ export default function Home() {
           <div className="grid grid-cols-4">
 
             <div className="justify-center">
-              {/* <a className="inline-flex items-center" href="./authentication">
-                <img height="50" width="50" />
-              </a> */}
               <a className="items-center text-base font-medium text-center text-gray-900" href="./authentication">
                 <h2>Token Authentication</h2>            
               </a>
@@ -35,9 +32,6 @@ export default function Home() {
             </div>
             
             <div className="justify-center">
-              {/* <a className="inline-flex items-center" href="./pub-sub">
-                <img height="50" width="50" />
-              </a> */}
               <a className="items-center text-base font-medium text-center text-gray-900" href="./pub-sub">
                 <h2>Pub/Sub</h2>
               </a>
@@ -45,9 +39,6 @@ export default function Home() {
             </div>
 
             <div className="justify-center">
-              {/* <a className="inline-flex items-center" href="./presence">
-                <img height="50" width="50" />
-              </a> */}
               <a className="items-center text-base font-medium text-center text-gray-900" href="./presence">
                 <h2>Presence</h2>
               </a>
@@ -55,9 +46,6 @@ export default function Home() {
             </div>
 
             <div className="justify-center">
-              {/* <a className="inline-flex items-center" href="./history">
-                <img height="50" width="50" />
-              </a> */}
               <a className="items-center text-base font-medium text-center text-gray-900" href="./history">
                 <h2>History</h2>
               </a>

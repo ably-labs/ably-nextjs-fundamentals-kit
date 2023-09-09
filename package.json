@@ -9,20 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ably-labs/react-hooks": "^3.0.0-canary.1",
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.8",
+    "@types/node": "20.6.0",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
     "ably": "^1.2.43",
     "dotenv": "^16.0.3",
-    "eslint": "8.27.0",
+    "eslint": "8.49.0",
     "flowbite": "^1.8.1",
-    "flowbite-react": "^0.5.0",
+    "flowbite-react": "^0.6.0",
     "next": "^13.4.16",
     "random-names-generator": "^1.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "4.8.4"
+    "typescript": "5.2.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.15",
