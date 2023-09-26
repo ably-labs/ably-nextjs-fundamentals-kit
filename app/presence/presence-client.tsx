@@ -4,92 +4,77 @@ import * as Ably from 'ably';
 import names from  'random-names-generator'
 
 import { AblyProvider, useAbly, usePresence } from "ably/react"
-import { useState, useEffect, ReactElement, FC, SetStateAction, Dispatch } from 'react'
-
+import { useState, ReactElement, FC } from 'react'
 import Logger, { LogEntry } from '../../components/logger';
-import NavBar from '../../components/navbar';
+import SampleHeader from '../../components/SampleHeader';
 
 export default function Presence() {
 
-  const client = new Ably.Realtime.Promise ({ authUrl:'/token', autoConnect: false });
+  const [randomName]  =  useState(names.random());
+  const [isOnline, setIsOnline] = useState(false)
 
-  const [randomName,  setRandomName]  =  useState('');
-  const [isUsernameValid, setIsUsernameValid] = useState<boolean>(false)
+  const client = new Ably.Realtime.Promise ({ authUrl:'/token', authMethod: 'POST', clientId: randomName });
 
-  useEffect(()  => {
-    let name = names.random();
-    setRandomName(name)
-  }, [])
+  function toggleState(val: boolean) {
+    setIsOnline(val)
+  }
 
   return (
-    <div className="container mx-auto">
-      <header>
-        <NavBar />
-      </header>
-      <section className="bg-white">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl">
-          <p className="mb-8 text-sm font-normal text-gray-500 text-center">
-            Presence with Ably allows you to keep track of devices that are present on a channel. This is great for tracking if a device is online or offline or indicating if a user is in a chat room when using Ably for Chat.  <a href="/presence" target="_blank">Open this page</a> in another tab to see more users enter and leave the presence channel.
-          </p>
-          <p className="mb-8 text-sm font-normal text-gray-500">Hello {randomName}</p>
-          { isUsernameValid === false?
-            <section>
-              <button className="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300" onClick={()=>setIsUsernameValid(true)}>Join</button>
-            </section>
-          :
-            <AblyProvider client={ client }>
-                <PresenceMessages clientId={randomName} stateChanger={setIsUsernameValid} />
-            </AblyProvider>
-          }
+     <AblyProvider client={ client }>
+      <div className="flex flex-col justify-start items-start gap-4">
+        <SampleHeader sampleName="Presence" sampleIcon="Presence.svg" sampleDocsLink="https://ably.com/docs/getting-started/react#usePresence" />
+        <div className="font-next-book text-base w-[480px] text-slate-800 text-opacity-100 leading-6 font-light">
+            Presence with Ably allows you to keep track of devices that are
+            present on a channel. This is great for tracking if a device is
+            online or offline or indicating if a user is in a chat room when
+            using Ably for Chat.&nbsp;
+            <a href="" target="_blank"><span className="text-sky-600 text-opacity-100">
+              Open this page in another tab
+            </span></a>
+            &nbsp;to see more users enter and leave the presence channel.
+          </div>
         </div>
-      </section>
-    </div>
+      { isOnline ? (
+        <PresenceMessages toggle={toggleState} />
+      ) : (
+        <div className="flex justify-center items-center rounded-md w-[120px] h-10 bg-black">
+          <div className="font-next-book text-base min-w-[80px] whitespace-nowrap text-white text-opacity-100 text-center leading-4 font-medium">
+            <button onClick={() => setIsOnline(true)}>Join</button>
+          </div>
+        </div>
+      ) }
+    </AblyProvider>   
   )
 }
 
-type PresenceMessageProps = {
-  clientId: string,
-  stateChanger:Dispatch<SetStateAction<boolean>>
-}
-
-const PresenceMessages: FC<PresenceMessageProps> = ({ clientId, stateChanger }): ReactElement => {
+const PresenceMessages: FC<any> = ({toggle}): ReactElement => {
   
   const [logs, setLogs] = useState<Array<LogEntry>>([])
   const client = useAbly();
 
-  useEffect(() =>{
-    if (clientId === null) return;
-    client.auth.authorize(
-      { clientId: clientId },
-      { authUrl:'/token', authMethod: 'POST' }
-    );
-    return () => {
-      console.log(`Unmounting Functional Component`)
-    }
-  }, []);
-
-  //this should only happen once we have a valid user name
   const { presenceData, updateStatus } = usePresence("room", {'status':'available'}, (member) => {
     setLogs(prev => [...prev, new LogEntry(`action: ${member.action} clientId: ${member.clientId}`)])
-    return (
-        <li className="mb-8 text-sm font-normal text-gray-500" key={member.id}>{member.clientId}</li>
-    )
   });
 
   return (
     <>
-      <section>
-        <ul>
-          {presenceData.map((member) => {
-            //setLogs(prev => [...prev, new LogEntry(`action: ${member.action} clientId: ${member.clientId}`)])
-            return (<li className="mb-8 text-sm font-normal text-gray-500" key={member.id}>{member.clientId}</li>)
-          })}
-        </ul>
-      </section>
-      <button className="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300" onClick={() => stateChanger(false)}>Leave</button>
-      <section>
-        <Logger logEntries={logs} />
-      </section>
+      <div className="flex flex-col justify-start items-start gap-4 w-[752px]">
+        <div className="flex flex-row justify-start items-start gap-4 pt-6 pr-6 pb-6 pl-6 rounded-lg border-slate-100 border-t border-b border-l border-r border-solid border bg-white min-w-[752px]">
+          <div className="font-jetbrains-mono text-sm min-w-[227px] whitespace-nowrap text-rose-400 text-opacity-100 leading-normal font-medium">
+            <ul>
+            {presenceData.map((member) => {
+              return (<li className="font-jetbrains-mono text-sm min-w-[133px] whitespace-nowrap text-rose-400 text-opacity-100 leading-normal font-medium" key={member.id}>{member.clientId}</li>)
+            })}
+          </ul>
+          </div>
+        </div>
+        <div className="flex justify-center items-center rounded-md w-[120px] h-10 bg-black">
+          <div className="font-next-book text-base min-w-[80px] whitespace-nowrap text-white text-opacity-100 text-center leading-4 font-medium">
+            <button onClick={() => toggle(false)}>Leave</button>
+          </div>
+        </div>
+      </div>
+      <Logger logEntries={logs} />
     </>
   )
 }

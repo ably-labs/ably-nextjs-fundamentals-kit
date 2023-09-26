@@ -3,70 +3,76 @@
 import * as Ably from 'ably';
 import { AblyProvider, useChannel } from "ably/react"
 import { MouseEventHandler, MouseEvent, useState } from 'react'
-
 import Logger, { LogEntry } from '../../components/logger';
-import NavBar from '../../components/navbar';
+import SampleHeader from '../../components/SampleHeader';
 
-export default function PubSub() {
+export default function PubSubClient() {
 
   const client = new Ably.Realtime.Promise ({ authUrl: '/token', authMethod: 'POST' });
 
-    return (
-      <div className="container mx-auto">
-      <header>
-        <NavBar />
-      </header>
-      <section className="bg-white">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl">
-          <p className="mb-8 text-sm font-normal text-gray-500 text-center">
-            Publish messages on channels and subscribe to channels to receive messages. Click the <b>Publish from the client</b> to publish a message on a channel from the web browser client. Click the <b>Public from the server</b> to publish a message from a serverless function.
-          </p>
-          <AblyProvider client={ client }>
-              <PubSubMessages />
-          </AblyProvider> 
+  return (
+    <AblyProvider client={ client }>
+      <div className="flex flex-col justify-start items-start gap-4 h-[172px]">
+        <SampleHeader sampleName="Pub/Sub Channels" sampleIcon="PubSubChannels.svg" sampleDocsLink="https://ably.com/docs/getting-started/react#useChannel" />
+        <div className="font-next-book text-base w-[480px] text-slate-800 text-opacity-100 leading-6 font-light">
+          Publish messages on channels and subscribe to channels to receive messages. Click&nbsp;<span className="font-medium">Publish from Client</span>&nbsp;to publish a message on a channel from the web browser client. Click&nbsp;<span className="font-medium">Publish from Server</span>&nbsp;to publish a message from a serverless function.
         </div>
-        </section>
-      </div>  
-    )
+      </div>
+      <PubSubMessages />
+    </AblyProvider>
+  )
 }
 
 function PubSubMessages() {
 
-    const [logs, setLogs] = useState<Array<LogEntry>>([])
-    const { channel } = useChannel("status-updates", (message: Ably.Types.Message) => {
-        setLogs(prev => [...prev, new LogEntry(`✉️ event name: ${message.name} text: ${message.data.text}`)])
-    });
-    const [messageText, setMessageText] = useState<string>('A message')
+  const [logs, setLogs] = useState<Array<LogEntry>>([])
 
-    const publicFromClientHandler: MouseEventHandler = (_event: MouseEvent<HTMLButtonElement>) => {
-        if(channel === null) return
-        channel.publish('update-from-client', {text: `${messageText} @ ${new Date().toISOString()}`})
-   }
+  const { channel } = useChannel("status-updates", (message: Ably.Types.Message) => {
+    setLogs(prev => [...prev, new LogEntry(`✉️ event name: ${message.name} text: ${message.data.text}`)])
+  });
+  
+  const [messageText, setMessageText] = useState<string>('A message')
 
-    const publicFromServerHandler: MouseEventHandler = (_event: MouseEvent<HTMLButtonElement>) => {
-        fetch('/publish', {
-            'method': 'POST',
-            'headers': {
-                'content-type': 'application/json',
-            },
-            'body': JSON.stringify({text: `${messageText} @ ${new Date().toISOString()}`})
-        })
-    }
+  const publicFromClientHandler: MouseEventHandler = (_event: MouseEvent<HTMLButtonElement>) => {
+    if(channel === null) return
+    channel.publish('update-from-client', {text: `${messageText} @ ${new Date().toISOString()}`})
+  }
 
-    return (
-      <>
-        <div className="flex flex-row">
-          <span className="block mb-2 text-sm font-medium text-gray-900">Message text:</span>
-          <input className="block w-96 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500" id="message" type="text" placeholder="message to publish" value={messageText}  onChange={e => setMessageText(e.target.value)} />              
-          <button className="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300" onClick={publicFromClientHandler}>Publish from client</button>
-          <button className="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300" onClick={publicFromServerHandler}>Publish from server</button>
+  const publicFromServerHandler: MouseEventHandler = (_event: MouseEvent<HTMLButtonElement>) => {
+    fetch('/publish', {
+        'method': 'POST',
+        'headers': {
+            'content-type': 'application/json',
+        },
+        'body': JSON.stringify({text: `${messageText} @ ${new Date().toISOString()}`})
+    })
+  }
+
+  return (
+    <>
+      <div className="flex flex-col justify-start items-start gap-4 h-[138px]">
+        <div className="font-next-book text-sm min-w-[113px] whitespace-nowrap text-black text-opacity-100 leading-4 uppercase tracking-widest font-medium">
+          <span className="uppercase">Message text</span>
         </div>
-
-        <div className="p-5">
-            <h3 className="block mb-2 text-sm font-medium text-gray-900">Message Log</h3>
-            <Logger logEntries={logs} />
+        <div className="flex justify-center items-center rounded-md border-zinc-300 border-t border-b border-l border-r border-solid border w-[752px] h-12 bg-neutral-100">
+          <div className="font-next-book text-base min-w-[720px] whitespace-nowrap text-zinc-800 text-opacity-100 leading-6 font-light">
+            <input value={messageText}  onChange={e => setMessageText(e.target.value)} />
+          </div>
         </div>
-      </>       
-    )
+        <div className="flex flex-row justify-start items-start gap-4 w-[368px]">
+          <div className="flex justify-center items-center rounded-md w-44 h-10 bg-black">
+            <div className="font-next-book text-base min-w-[136px] whitespace-nowrap text-white text-opacity-100 leading-4 font-medium">
+              <button onClick={publicFromClientHandler}>Publish from Client</button>
+            </div>
+          </div>
+          <div className="flex justify-center items-center rounded-md w-44 h-10 bg-black">
+            <div className="font-next-book text-base min-w-[136px] whitespace-nowrap text-white text-opacity-100 leading-4 font-medium">
+              <button onClick={publicFromServerHandler}>Publish from Server</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Logger logEntries={logs} />
+    </>
+  )
 }
-

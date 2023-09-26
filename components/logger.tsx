@@ -14,19 +14,39 @@ export type LoggingProps = {
 
 export default function Logger({ logEntries }: LoggingProps) {
   return (
-    <ul>
-    {
-      // Show the newest log entry at the top
-      logEntries.sort((a: LogEntry, b: LogEntry) => {
-          return b.timestamp.getTime() - a.timestamp.getTime()
-        }).map((logEntry: LogEntry, index: number) => {
-        return (
-          <li className="block mb-2 text-sm font-medium text-gray-900" key={index}>
-            {logEntry.timestamp.toISOString()}: {logEntry.message}
-          </li>
-        )}
-      )
-    }
-    </ul>
+    <div className="flex flex-col justify-start items-start gap-4">
+          <div className="font-next-book text-sm min-w-[108px] whitespace-nowrap text-black text-opacity-100 leading-4 uppercase tracking-widest font-medium">
+            <span className="uppercase">Message log</span>
+          </div>
+          <div className="flex flex-col justify-start items-start rounded-lg bg-gray-900">
+            <div className="flex flex-row justify-start items-center pt-3 pr-2 pb-3 pl-2 border-slate-800 border-b border-solid w-[752px] h-10">
+              <div className="flex flex-row justify-start items-start gap-1.5 pt-2.5 pr-2.5 pb-2.5 pl-2.5 h-7">
+                <img className={`bg-red-500`} width="10px" height="10px" src="/assets/RedButton.svg" alt="Red" />
+                <img className={`bg-yellow-400`} width="10px" height="10px" src="/assets/YellowButton.svg" alt="Yellow" />
+                <img className={`bg-green-600`} width="10px" height="10px" src="/assets/GreenButton.svg" alt="Green" />
+              </div>
+            </div>
+
+            <div className="flex flex-row justify-start items-start gap-4 pt-6 pr-6 pb-6 pl-6 w-[752px] max-h-60 overflow-y-scroll">
+              <div className="font-jetbrains-mono text-sm w-[793px] text-rose-400 text-opacity-100 leading-normal font-medium">
+              <ul>
+              {
+                // Show the newest log entry at the top
+                logEntries.sort((a: LogEntry, b: LogEntry) => {
+                    return b.timestamp.getTime() - a.timestamp.getTime()
+                  }).map((logEntry: LogEntry, index: number) => {
+                  return (
+                    <li key={index}>
+                      <span className="font-jetbrains-mono text-sm min-w-[20px] whitespace-nowrap text-slate-500 text-opacity-100 leading-normal font-medium">{index+1}</span>&nbsp;&nbsp;{logEntry.message}
+                    </li>
+                  )}
+                )
+              }
+              </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+   
   )
 }

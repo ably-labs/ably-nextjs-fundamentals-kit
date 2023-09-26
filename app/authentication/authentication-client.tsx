@@ -1,11 +1,11 @@
 
 'use client'
 
-import { MouseEventHandler, MouseEvent, useState, useEffect } from 'react'
+import { MouseEventHandler, MouseEvent, useState } from 'react'
 
 import * as Ably from 'ably'
 import Logger, { LogEntry } from '../../components/logger'
-import NavBar from '../../components/navbar'
+import SampleHeader from '../../components/SampleHeader'
 import { AblyProvider, useAbly, useConnectionStateListener } from 'ably/react'
 
 export default function Authentication() {
@@ -13,21 +13,15 @@ export default function Authentication() {
   const client = new Ably.Realtime.Promise ({ authUrl: '/token', authMethod: 'POST' });
 
   return (
-    <div className="container mx-auto">
-      <header>
-        <NavBar />
-      </header>
-      <section className="bg-white">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl">
-          <p className="mb-8 text-sm font-normal text-gray-500 text-center">
-          Authenticate and establish a persistent bi-direction connection to the Ably platform.
-          </p>
-          <AblyProvider client={ client }>
-              <ConnectionStatus />
-          </AblyProvider>
+    <AblyProvider client={ client }>
+      <div className="flex flex-col justify-start items-start gap-4 h-[172px]">
+        <SampleHeader sampleName="Authentication" sampleIcon="Authentication.svg" sampleDocsLink="https://ably.com/docs/getting-started/react#authenticate" />
+        <div className="font-next-book text-base w-[480px] text-slate-800 text-opacity-100 leading-6 font-light">
+          Authenticate and establish a persistant bi-directional connection to the Ably platform.
         </div>
-      </section>
-    </div>    
+      </div>
+      <ConnectionStatus />
+    </AblyProvider>   
   )
 }
 
@@ -54,15 +48,24 @@ const ConnectionStatus = () => {
 
   return (
     <>
-      <section className="mb-8 text-sm font-normal text-gray-500 text-center">
-        <h3>Connection status: <span className="">{connectionState}</span></h3>
-        
-        <div>
-          <button className="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300" onClick={connectionToggle}>{connectionState === 'connected'? 'Disconnect': 'Connect'}</button>
+      <div className="flex flex-col justify-start items-start gap-4 w-[752px] h-[124px]">
+        <div className="flex flex-row justify-start items-start gap-4 pt-6 pr-6 pb-6 pl-6 rounded-lg border-slate-100 border-t border-b border-l border-r border-solid border h-[68px] bg-white min-w-[752px]">
+          <div className="font-jetbrains-mono text-sm min-w-[227px] whitespace-nowrap text-rose-400 text-opacity-100 leading-normal font-medium">
+            connection status
+            <span className="text-zinc-200 text-opacity-100">&nbsp;</span>
+            =&nbsp;
+            <span className="text-violet-400 text-opacity-100">
+              {connectionState}
+            </span>
+          </div>
         </div>
-
-        <Logger logEntries={logs} />
-      </section>
+        <div className="flex justify-center items-center rounded-md w-[120px] h-10 bg-black">
+          <div className="font-next-book text-base min-w-[80px] whitespace-nowrap text-white text-opacity-100 text-center leading-4 font-medium">
+            <button onClick={connectionToggle}>{connectionState === 'connected'? 'Disconnect': 'Connect'}</button>
+          </div>
+        </div>
+      </div>
+      <Logger logEntries={logs} />
     </>
   )
 }

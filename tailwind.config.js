@@ -11,6 +11,9 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      "next-book": "'NEXT Book', sans-serif",
+    },
     extend: {},
   },
   plugins: [require("flowbite/plugin")],
