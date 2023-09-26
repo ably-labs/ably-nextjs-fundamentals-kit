@@ -93,6 +93,7 @@ export default function Sidebar(props: { pageId: string; }) {
                 menuItemLink
               }) => (
               <MenuItem
+                  key={menuItemId}
                   menuItemText={menuItemText}
                   menuItemActive={(menuItemId==props.pageId) ? true : false}
                   menuItemLink={menuItemLink}
@@ -110,7 +111,7 @@ export default function Sidebar(props: { pageId: string; }) {
           />
           <div className="flex flex-col justify-start items-start h-24">
           {footerItems.map(({ menuItemText, menuItemLink }) => (
-              <FooterItem menuItemText={menuItemText} menuItemLink={menuItemLink} />
+              <FooterItem key={menuItemText} menuItemText={menuItemText} menuItemLink={menuItemLink} />
           ))}
           </div>
           <img
@@ -161,6 +162,7 @@ export default function Sidebar(props: { pageId: string; }) {
                 menuItemLink
               }) => (
               <SocialItem
+                  key={menuItemText}
                   menuItemText={menuItemText}
                   menuItemIcon={menuItemIcon}
                   menuItemLink={menuItemLink}
