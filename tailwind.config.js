@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./node_modules/flowbite-react/**/*.js",
-
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,10 +10,9 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      "next-book": "'NEXT Book', sans-serif",
+      "manrope": "Manrope, sans-serif",
     },
     extend: {},
-  },
-  plugins: [require("flowbite/plugin")],
+  }
 }
 

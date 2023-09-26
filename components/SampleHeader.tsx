@@ -12,13 +12,13 @@ export default function SampleHeader(props: { sampleName:string, sampleIcon:stri
             />
           </div>
         </div>
-        <div className="font-next-book text-[18px] min-w-[152px] whitespace-nowrap text-black text-opacity-100 leading-6 font-medium">
+        <div className="font-manrope text-[18px] min-w-[152px] whitespace-nowrap text-black text-opacity-100 leading-6 font-medium">
           {props.sampleName}
         </div>
       </div>
       <div className="flex justify-between items-center gap-1 rounded-md w-[84px] h-5 overflow-hidden">
         <a href={props.sampleDocsLink} target="_blank">
-          <div className="font-next-book text-sm min-w-[64px] whitespace-nowrap text-sky-600 text-opacity-100 leading-5 font-medium">
+          <div className="font-manrope text-sm min-w-[64px] whitespace-nowrap text-sky-600 text-opacity-100 leading-5 font-medium">
             View docs
           </div>
         </a>

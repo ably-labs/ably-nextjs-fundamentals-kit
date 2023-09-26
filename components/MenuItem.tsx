@@ -12,7 +12,7 @@ export default function MenuItem(props:MenuItemProps) {
     >
       <a href={props.menuItemLink}>
       <div
-        className={`font-next-book min-w-[256px] whitespace-nowrap text-opacity-100 leading-4 font-medium ${
+        className={`font-manrope min-w-[256px] whitespace-nowrap text-opacity-100 leading-4 font-medium ${
           props.menuItemActive ? "text-sm" : "text-base"
         } ${props.menuItemActive ? "text-sky-600": "text-black" } ${props.menuItemActive ? "uppercase" : ""} ${
           props.menuItemActive ? "tracking-widest" : ""

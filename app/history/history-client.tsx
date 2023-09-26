@@ -15,7 +15,7 @@ export default function Presence() {
      <AblyProvider client={ client }>
       <div className="flex flex-col justify-start items-start gap-4">
         <SampleHeader sampleName="History" sampleIcon="History.svg" sampleDocsLink="https://ably.com/docs/storage-history/history?lang=javascript" />
-        <div className="font-next-book text-base w-[480px] text-slate-800 text-opacity-100 leading-6 font-light">
+        <div className="font-manrope text-base w-[480px] text-slate-800 text-opacity-100 leading-6 font-light">
           Retrieve a history of messages that have been published to a channel.
           Messages are only stored for 2 minutes by default. In order for them
           to be stored for longer you should enable the&nbsp;
@@ -44,7 +44,7 @@ export default function Presence() {
             alt="Alert"
           />
         </div>
-        <div className="font-next-book text-sm w-[408px] text-gray-500 text-opacity-100 leading-5 font-light">
+        <div className="font-manrope text-sm w-[408px] text-gray-500 text-opacity-100 leading-5 font-light">
           <span className="font-medium">Important:&nbsp;</span>You need to
           publish at least 1 message from the&nbsp;
           <a href="/pub-sub"><span className="text-sky-600 text-opacity-100">
@@ -90,7 +90,7 @@ function HistoryMessages() {
   return (
     <>
     <div className="flex flex-col justify-start items-start gap-4 w-[752px]">
-    <div className="font-next-book text-sm min-w-[480px] whitespace-nowrap text-black text-opacity-100 leading-4 uppercase tracking-widest font-medium">
+    <div className="font-manrope text-sm min-w-[480px] whitespace-nowrap text-black text-opacity-100 leading-4 uppercase tracking-widest font-medium">
       <span className="uppercase">history</span>
     </div>
     <div className="flex flex-row justify-start items-start gap-4 pt-6 pr-6 pb-6 pl-6 rounded-lg border-slate-100 border-t border-b border-l border-r border-solid border bg-white min-w-[752px]">
@@ -105,7 +105,7 @@ function HistoryMessages() {
     </div>
   </div>
   <div className="flex flex-col justify-start items-start gap-4 w-[752px]">
-    <div className="font-next-book text-sm min-w-[480px] whitespace-nowrap text-black text-opacity-100 leading-4 uppercase tracking-widest font-medium">
+    <div className="font-manrope text-sm min-w-[480px] whitespace-nowrap text-black text-opacity-100 leading-4 uppercase tracking-widest font-medium">
       <span className="uppercase">realtime</span>
     </div>
     <div className="flex flex-row justify-start items-start gap-4 pt-6 pr-6 pb-6 pl-6 rounded-lg border-slate-100 border-t border-b border-l border-r border-solid border bg-white min-w-[752px]">

@@ -15,7 +15,7 @@ export type LoggingProps = {
 export default function Logger({ logEntries }: LoggingProps) {
   return (
     <div className="flex flex-col justify-start items-start gap-4">
-      <div className="font-next-book text-sm min-w-[108px] whitespace-nowrap text-black text-opacity-100 leading-4 uppercase tracking-widest font-medium">
+      <div className="font-manrope text-sm min-w-[108px] whitespace-nowrap text-black text-opacity-100 leading-4 uppercase tracking-widest font-medium">
         <span className="uppercase">Message log</span>
       </div>
       <div className="flex flex-col justify-start items-start rounded-lg bg-gray-900">

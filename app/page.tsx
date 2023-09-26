@@ -37,7 +37,7 @@ const Home = () => {
               alt="Next.js"
             />
           </div>
-          <div className="font-next-book text-[18px] w-[640px] text-slate-800 text-opacity-100 leading-6 font-light">
+          <div className="font-manrope text-[18px] w-[640px] text-slate-800 text-opacity-100 leading-6 font-light">
             <span className="font-medium text-black text-opacity-100">
               At Ably we are big fans of Next.js&nbsp;
             </span>
@@ -62,19 +62,19 @@ const Home = () => {
                         />
                       </div>
                     </div>
-                    <div className="font-next-book text-base min-w-[109px] whitespace-nowrap text-black text-opacity-100 leading-6 font-medium">
+                    <div className="font-manrope text-base min-w-[109px] whitespace-nowrap text-black text-opacity-100 leading-6 font-medium">
                       Authentication
                     </div>
                   </div>
                   <div className="flex flex-col justify-start items-start gap-4 h-24">
-                    <div className="font-next-book text-sm w-80 text-slate-800 text-opacity-100 leading-5 font-light">
+                    <div className="font-manrope text-sm w-80 text-slate-800 text-opacity-100 leading-5 font-light">
                       Token Authentication is the recommended approach for auth
                       with Ably.
                       <br />
                     </div>
                     <div className="flex justify-between items-center gap-1 rounded-md w-24 h-5 overflow-hidden">
                       <a href="/authentication">
-                      <div className="font-next-book text-sm min-w-[78px] whitespace-nowrap text-sky-600 text-opacity-100 leading-5 font-medium">
+                      <div className="font-manrope text-sm min-w-[78px] whitespace-nowrap text-sky-600 text-opacity-100 leading-5 font-medium">
                         Explore now
                       </div>
                       </a>
@@ -105,19 +105,19 @@ const Home = () => {
                         />
                       </div>
                     </div>
-                    <div className="font-next-book text-base min-w-[136px] whitespace-nowrap text-black text-opacity-100 leading-6 font-medium">
+                    <div className="font-manrope text-base min-w-[136px] whitespace-nowrap text-black text-opacity-100 leading-6 font-medium">
                       Pub/Sub Channels
                     </div>
                   </div>
                   <div className="flex flex-col justify-start items-start gap-4 h-24">
-                    <div className="font-next-book text-sm w-80 text-slate-800 text-opacity-100 leading-5 font-light">
+                    <div className="font-manrope text-sm w-80 text-slate-800 text-opacity-100 leading-5 font-light">
                       Pub/Sub (Publish/Subscribe) with Ably lets you publish
                       messages on channels and subscribe to channels to receive
                       messages.
                     </div>
                     <div className="flex justify-between items-center gap-1 rounded-md w-24 h-5 overflow-hidden">
                     <a href="/pub-sub">
-                      <div className="font-next-book text-sm min-w-[78px] whitespace-nowrap text-sky-600 text-opacity-100 leading-5 font-medium">
+                      <div className="font-manrope text-sm min-w-[78px] whitespace-nowrap text-sky-600 text-opacity-100 leading-5 font-medium">
                         Explore now
                       </div>
                       </a>
@@ -150,12 +150,12 @@ const Home = () => {
                         />
                       </div>
                     </div>
-                    <div className="font-next-book text-base min-w-[65px] whitespace-nowrap text-black text-opacity-100 leading-6 font-medium">
+                    <div className="font-manrope text-base min-w-[65px] whitespace-nowrap text-black text-opacity-100 leading-6 font-medium">
                       Presence
                     </div>
                   </div>
                   <div className="flex flex-col justify-start items-start gap-4 h-[136px]">
-                    <div className="font-next-book text-sm w-80 text-slate-800 text-opacity-100 leading-5 font-light">
+                    <div className="font-manrope text-sm w-80 text-slate-800 text-opacity-100 leading-5 font-light">
                       Presence with Ably allows you to keep track of devices that
                       are present on a channel. This is great for tracking if a
                       device is online or offline or indicating if a user is in a
@@ -163,7 +163,7 @@ const Home = () => {
                     </div>
                     <div className="flex justify-between items-center gap-1 rounded-md w-24 h-5 overflow-hidden">
                     <a href="/presence">
-                      <div className="font-next-book text-sm min-w-[78px] whitespace-nowrap text-sky-600 text-opacity-100 leading-5 font-medium">
+                      <div className="font-manrope text-sm min-w-[78px] whitespace-nowrap text-sky-600 text-opacity-100 leading-5 font-medium">
                         Explore now
                       </div>
                       </a><a href="/presence">
@@ -193,18 +193,18 @@ const Home = () => {
                         />
                       </div>
                     </div>
-                    <div className="font-next-book text-base min-w-[53px] whitespace-nowrap text-black text-opacity-100 leading-6 font-medium">
+                    <div className="font-manrope text-base min-w-[53px] whitespace-nowrap text-black text-opacity-100 leading-6 font-medium">
                       History
                     </div>
                   </div>
                   <div className="flex flex-col justify-start items-start gap-4 h-[136px]">
-                    <div className="font-next-book text-sm w-80 text-slate-800 text-opacity-100 leading-5 font-light">
+                    <div className="font-manrope text-sm w-80 text-slate-800 text-opacity-100 leading-5 font-light">
                       Retrieve a history of messages that have been published to a
                       channel.
                     </div>
                     <div className="flex justify-between items-center gap-1 rounded-md w-24 h-5 overflow-hidden">
                     <a href="/history">
-                      <div className="font-next-book text-sm min-w-[78px] whitespace-nowrap text-sky-600 text-opacity-100 leading-5 font-medium">
+                      <div className="font-manrope text-sm min-w-[78px] whitespace-nowrap text-sky-600 text-opacity-100 leading-5 font-medium">
                         Explore now
                       </div>
                       </a><a href="/history">

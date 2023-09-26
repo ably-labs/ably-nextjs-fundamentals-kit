@@ -16,7 +16,7 @@ export default function Authentication() {
     <AblyProvider client={ client }>
       <div className="flex flex-col justify-start items-start gap-4 h-[172px]">
         <SampleHeader sampleName="Authentication" sampleIcon="Authentication.svg" sampleDocsLink="https://ably.com/docs/getting-started/react#authenticate" />
-        <div className="font-next-book text-base w-[480px] text-slate-800 text-opacity-100 leading-6 font-light">
+        <div className="font-manrope text-base w-[480px] text-slate-800 text-opacity-100 leading-6 font-light">
           Authenticate and establish a persistant bi-directional connection to the Ably platform.
         </div>
       </div>
@@ -60,7 +60,7 @@ const ConnectionStatus = () => {
           </div>
         </div>
         <div className="flex justify-center items-center rounded-md w-[120px] h-10 bg-black">
-          <div className="font-next-book text-base min-w-[80px] whitespace-nowrap text-white text-opacity-100 text-center leading-4 font-medium">
+          <div className="font-manrope text-base min-w-[80px] whitespace-nowrap text-white text-opacity-100 text-center leading-4 font-medium">
             <button onClick={connectionToggle}>{connectionState === 'connected'? 'Disconnect': 'Connect'}</button>
           </div>
         </div>
