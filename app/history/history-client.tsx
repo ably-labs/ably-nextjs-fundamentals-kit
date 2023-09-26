@@ -47,9 +47,9 @@ export default function Presence() {
         <div className="font-next-book text-sm w-[408px] text-gray-500 text-opacity-100 leading-5 font-light">
           <span className="font-medium">Important:&nbsp;</span>You need to
           publish at least 1 message from the&nbsp;
-          <span className="text-sky-600 text-opacity-100">
+          <a href="/pub-sub"><span className="text-sky-600 text-opacity-100">
             Pub/Sub Channels example
-          </span>
+          </span></a>
           &nbsp;to see history log.
         </div>
       </div>

@@ -27,7 +27,7 @@ export default function Logger({ logEntries }: LoggingProps) {
               </div>
             </div>
 
-            <div className="flex flex-row justify-start items-start gap-4 pt-6 pr-6 pb-6 pl-6 w-[752px] max-h-60 overflow-y-scroll">
+            <div className="flex flex-col-reverse justify-start items-start gap-4 pt-6 pr-6 pb-6 pl-6 w-[752px] max-h-60 overflow-y-scroll">
               <div className="font-jetbrains-mono text-sm w-[793px] text-rose-400 text-opacity-100 leading-normal font-medium">
               <ul>
               {

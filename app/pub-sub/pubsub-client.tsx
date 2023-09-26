@@ -54,11 +54,7 @@ function PubSubMessages() {
         <div className="font-next-book text-sm min-w-[113px] whitespace-nowrap text-black text-opacity-100 leading-4 uppercase tracking-widest font-medium">
           <span className="uppercase">Message text</span>
         </div>
-        <div className="flex justify-center items-center rounded-md border-zinc-300 border-t border-b border-l border-r border-solid border w-[752px] h-12 bg-neutral-100">
-          <div className="font-next-book text-base min-w-[720px] whitespace-nowrap text-zinc-800 text-opacity-100 leading-6 font-light">
-            <input value={messageText}  onChange={e => setMessageText(e.target.value)} />
-          </div>
-        </div>
+        <input className="font-next-book px-3 rounded-md items-center text-base min-w-[720px] w-[752px] whitespace-nowrap text-zinc-800 text-opacity-100 leading-6 font-light h-12 border-zinc-300 border-solid border bg-neutral-100" value={messageText}  onChange={e => setMessageText(e.target.value)} />
         <div className="flex flex-row justify-start items-start gap-4 w-[368px]">
           <div className="flex justify-center items-center rounded-md w-44 h-10 bg-black">
             <div className="font-next-book text-base min-w-[136px] whitespace-nowrap text-white text-opacity-100 leading-4 font-medium">
