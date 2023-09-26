@@ -13,6 +13,9 @@ module.exports = {
       "manrope": "Manrope, sans-serif",
     },
     extend: {},
-  }
+  },
+  plugins: [
+    require('tailwind-scrollbar'),
+  ],
 }
 

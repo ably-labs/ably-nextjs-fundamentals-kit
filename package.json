@@ -21,6 +21,7 @@
     "random-names-generator": "^1.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "tailwind-scrollbar": "^3.0.5",
     "typescript": "5.2.2"
   },
   "devDependencies": {
