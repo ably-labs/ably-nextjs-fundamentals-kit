@@ -33,7 +33,7 @@ const Home = () => {
             <img
               width="96px"
               height="96px"
-              src="/assets/nextjslogo.svg"
+              src="/assets/NextjsLogo.svg"
               alt="Next.js"
             />
           </div>
