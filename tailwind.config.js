@@ -11,11 +11,16 @@ module.exports = {
   theme: {
     fontFamily: {
       "manrope": "Manrope, sans-serif",
+      "jetbrains-mono": "'JetBrains Mono', monospace",
     },
-    extend: {},
+    extend: {
+      colors: {
+        'linkedin':'#1269BF',
+        'discord':'#5B64EA'
+      }
+    },
   },
   plugins: [
     require('tailwind-scrollbar'),
   ],
 }
-

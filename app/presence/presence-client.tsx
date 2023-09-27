@@ -21,9 +21,10 @@ export default function Presence() {
 
   return (
      <AblyProvider client={ client }>
-      <div className="flex flex-col justify-start items-start gap-4">
+      <div className="flex flex-row justify-center">
+      <div className="flex flex-col justify-start items-start gap-10">
         <SampleHeader sampleName="Presence" sampleIcon="Presence.svg" sampleDocsLink="https://ably.com/docs/getting-started/react#usePresence" />
-        <div className="font-manrope text-base w-[480px] text-slate-800 text-opacity-100 leading-6 font-light">
+        <div className="font-manrope text-base max-w-screen-sm text-slate-800 text-opacity-100 leading-6 font-light">
             Presence with Ably allows you to keep track of devices that are
             present on a channel. This is great for tracking if a device is
             online or offline or indicating if a user is in a chat room when
@@ -33,16 +34,17 @@ export default function Presence() {
             </span></a>
             &nbsp;to see more users enter and leave the presence channel.
           </div>
+          { isOnline ? (
+            <PresenceMessages toggle={toggleState} />
+          ) : (
+            <div className="flex justify-center items-center rounded-md w-[120px] h-10 bg-black">
+              <div className="font-manrope text-base min-w-[80px] whitespace-nowrap text-white text-opacity-100 text-center leading-4 font-medium">
+                <button onClick={() => setIsOnline(true)}>Join</button>
+              </div>
+            </div>
+          ) }
         </div>
-      { isOnline ? (
-        <PresenceMessages toggle={toggleState} />
-      ) : (
-        <div className="flex justify-center items-center rounded-md w-[120px] h-10 bg-black">
-          <div className="font-manrope text-base min-w-[80px] whitespace-nowrap text-white text-opacity-100 text-center leading-4 font-medium">
-            <button onClick={() => setIsOnline(true)}>Join</button>
-          </div>
-        </div>
-      ) }
+      </div>
     </AblyProvider>   
   )
 }
@@ -74,7 +76,7 @@ const PresenceMessages: FC<any> = ({toggle}): ReactElement => {
           </div>
         </div>
       </div>
-      <Logger logEntries={logs} />
+      <Logger logEntries={logs} displayHeader={true} />
     </>
   )
 }

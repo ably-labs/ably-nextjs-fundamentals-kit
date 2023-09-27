@@ -13,7 +13,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div className="flex flex-row bg-white">
+          <div className="flex flex-row gap-4 p-12 grow">
+            {children}
+          </div>
+        </div>
+      </body>
     </html>
   )
 }

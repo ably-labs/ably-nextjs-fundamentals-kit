@@ -9,21 +9,24 @@ export class LogEntry {
 }
 
 export type LoggingProps = {
-  logEntries: Array<LogEntry>
+  logEntries: Array<LogEntry>,
+  displayHeader: boolean
 }
 
-export default function Logger({ logEntries }: LoggingProps) {
+export default function Logger({ logEntries, displayHeader }: LoggingProps) {
   return (
     <div className="flex flex-col justify-start items-start gap-4">
+      { displayHeader &&
       <div className="font-manrope text-sm min-w-[108px] whitespace-nowrap text-black text-opacity-100 leading-4 uppercase tracking-widest font-medium">
         <span className="uppercase">Message log</span>
       </div>
+      }
       <div className="flex flex-col justify-start items-start rounded-lg bg-gray-900">
         <div className="flex flex-row justify-start items-center pt-3 pr-2 pb-3 pl-2 border-slate-800 border-b border-solid w-[752px] h-10">
           <div className="flex flex-row justify-start items-start gap-1.5 pt-2.5 pr-2.5 pb-2.5 pl-2.5 h-7">
-            <img className={`bg-red-500`} width="10px" height="10px" src="/assets/RedButton.svg" alt="Red" />
-            <img className={`bg-yellow-400`} width="10px" height="10px" src="/assets/YellowButton.svg" alt="Yellow" />
-            <img className={`bg-green-600`} width="10px" height="10px" src="/assets/GreenButton.svg" alt="Green" />
+            <img width="10px" height="10px" src="/assets/RedButton.svg" alt="Red" />
+            <img width="10px" height="10px" src="/assets/YellowButton.svg" alt="Yellow" />
+            <img width="10px" height="10px" src="/assets/GreenButton.svg" alt="Green" />
           </div>
         </div>
 
