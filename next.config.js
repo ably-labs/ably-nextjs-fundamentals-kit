@@ -9,13 +9,9 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     domains: ['static.ably.dev'],
   },
-  webpack: (config) => {
-    config.externals.push({
-      'utf-8-validate': 'commonjs utf-8-validate',
-      'bufferutil': 'commonjs bufferutil',
-    })
-    return config
-  },  
-}
+  experimental: {
+    serverComponentsExternalPackages: ['ably'],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
