@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import * as Ably from "ably/promises";
+import * as Ably from "ably";
 
 export async function POST(req: Request) {
   if (!process.env.ABLY_API_KEY) {
