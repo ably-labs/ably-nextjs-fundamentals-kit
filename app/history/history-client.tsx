@@ -2,54 +2,56 @@
 
 import * as Ably from 'ably';
 
-import { AblyProvider, useChannel } from "ably/react"
+import { AblyProvider, ChannelProvider, useChannel } from "ably/react"
 import { useState, useEffect } from 'react'
 import Logger, { LogEntry } from '../../components/logger';
 import SampleHeader from '../../components/SampleHeader';
 
 export default function Presence() {
 
-  const client = new Ably.Realtime.Promise ({ authUrl:'/token', authMethod: 'POST' });
+  const client = new Ably.Realtime ({ authUrl:'/token', authMethod: 'POST' });
 
   return (
      <AblyProvider client={ client }>
-      <div className="flex flex-row justify-center">
-        <div className="flex flex-col justify-start items-start gap-10 h-[172px]">
-          <div className="flex flex-col justify-start items-start gap-4">
-            <SampleHeader sampleName="History" sampleIcon="History.svg" sampleDocsLink="https://ably.com/docs/storage-history/history?lang=javascript" />
-            <div className="font-manrope text-base max-w-screen-sm text-slate-800 text-opacity-100 leading-6 font-light">
-              Retrieve a history of messages that have been published to a channel.
-              Messages are only stored for 2 minutes by default. In order for them
-              to be stored for longer you should enable the&nbsp;
-              <span className="text-xs font-jetbrains-mono font-medium bg-slate-200 p-1">
-                Persist all messages
-              </span>&nbsp;
-              <a href="https://ably.com/docs/channels?lang=javascript#rules" target="blank"><span className="text-sky-600 text-opacity-100">channel rule</span></a>
-              <span className="text-black text-opacity-100">&nbsp;</span>for
-              the&nbsp;
-              <span className="text-xs font-jetbrains-mono font-medium bg-slate-200 p-1">
-                status-updates
-              </span>
-              &nbsp;channel in your Ably app &nbsp;
+      <ChannelProvider channelName="status-updates">
+        <div className="flex flex-row justify-center">
+          <div className="flex flex-col justify-start items-start gap-10 h-[172px]">
+            <div className="flex flex-col justify-start items-start gap-4">
+              <SampleHeader sampleName="History" sampleIcon="History.svg" sampleDocsLink="https://ably.com/docs/storage-history/history?lang=javascript" />
+              <div className="font-manrope text-base max-w-screen-sm text-slate-800 text-opacity-100 leading-6 font-light">
+                Retrieve a history of messages that have been published to a channel.
+                Messages are only stored for 2 minutes by default. In order for them
+                to be stored for longer you should enable the&nbsp;
+                <span className="text-xs font-jetbrains-mono font-medium bg-slate-200 p-1">
+                  Persist all messages
+                </span>&nbsp;
+                <a href="https://ably.com/docs/channels?lang=javascript#rules" target="blank"><span className="text-sky-600 text-opacity-100">channel rule</span></a>
+                <span className="text-black text-opacity-100">&nbsp;</span>for
+                the&nbsp;
+                <span className="text-xs font-jetbrains-mono font-medium bg-slate-200 p-1">
+                  status-updates
+                </span>
+                &nbsp;channel in your Ably app &nbsp;
+              </div>
             </div>
+            <div className="flex flex-row justify-start items-start gap-4 pt-4 pr-4 pb-4 pl-4 rounded-lg border-slate-200 border-t border-b border-l border-r border-solid border w-[480px] h-[72px] bg-white">
+              <div className="flex flex-col justify-center items-center h-5">
+                <img width="24px" height="22px" src="/assets/Alert.svg" alt="Alert" />
+              </div>
+              <div className="font-manrope text-sm text-gray-500 text-opacity-100 leading-5 font-light">
+                <span className="font-medium">Important:&nbsp;</span>You need to
+                publish at least 1 message from the&nbsp;
+                <a href="/pub-sub" target="_blank"><span className="text-sky-600 text-opacity-100">
+                  Pub/Sub Channels example
+                </span></a>
+                &nbsp;to see history log.
+              </div>
+              
+            </div>
+            <HistoryMessages />
           </div>
-          <div className="flex flex-row justify-start items-start gap-4 pt-4 pr-4 pb-4 pl-4 rounded-lg border-slate-200 border-t border-b border-l border-r border-solid border w-[480px] h-[72px] bg-white">
-            <div className="flex flex-col justify-center items-center h-5">
-              <img width="24px" height="22px" src="/assets/Alert.svg" alt="Alert" />
-            </div>
-            <div className="font-manrope text-sm text-gray-500 text-opacity-100 leading-5 font-light">
-              <span className="font-medium">Important:&nbsp;</span>You need to
-              publish at least 1 message from the&nbsp;
-              <a href="/pub-sub" target="_blank"><span className="text-sky-600 text-opacity-100">
-                Pub/Sub Channels example
-              </span></a>
-              &nbsp;to see history log.
-            </div>
-            
-          </div>
-          <HistoryMessages />
         </div>
-      </div>
+      </ChannelProvider>
     </AblyProvider>   
   )
 }
@@ -59,19 +61,19 @@ function HistoryMessages() {
   const [realtimeLogs, setRealtimeLogs] = useState<Array<LogEntry>>([])
   const [historicalLogs, setHistoricalLogs] = useState<Array<LogEntry>>([])
 
-  const { channel } = useChannel("status-updates", (message: Ably.Types.Message) => {
+  const { channel } = useChannel("status-updates", (message: Ably.Message) => {
     console.log(message);
     setRealtimeLogs(prev => [...prev, new LogEntry(`✉️ event name: ${message.name} text: ${message.data.text}`)])
   });
 
   useEffect(() => {
     const getHistory = async () => {
-      let history: Ably.Types.PaginatedResult<Ably.Types.Message> = await channel.history()
+      let history: Ably.PaginatedResult<Ably.Message> | null = await channel.history()
       do {
         history.items.forEach(message => {
           setHistoricalLogs(prev => [
             ...prev,
-            new LogEntry(`"${message.data.text}" sent at ${new Date(message.timestamp).toISOString()}`)
+            new LogEntry(`"${message.data.text}" sent at ${new Date(message.timestamp!).toISOString()}`)
           ])
         })
         history = await history.next()

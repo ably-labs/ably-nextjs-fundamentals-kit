@@ -1,26 +1,28 @@
 'use client'
 
 import * as Ably from 'ably';
-import { AblyProvider, useChannel } from "ably/react"
+import { AblyProvider, ChannelProvider, useChannel } from "ably/react"
 import { MouseEventHandler, MouseEvent, useState } from 'react'
 import Logger, { LogEntry } from '../../components/logger';
 import SampleHeader from '../../components/SampleHeader';
 
 export default function PubSubClient() {
 
-  const client = new Ably.Realtime.Promise ({ authUrl: '/token', authMethod: 'POST' });
+  const client = new Ably.Realtime ({ authUrl: '/token', authMethod: 'POST' });
 
   return (
     <AblyProvider client={ client }>
-      <div className="flex flex-row justify-center">
-        <div className="flex flex-col justify-start items-start gap-10">
-          <SampleHeader sampleName="Pub/Sub Channels" sampleIcon="PubSubChannels.svg" sampleDocsLink="https://ably.com/docs/getting-started/react#useChannel" />
-          <div className="font-manrope text-base max-w-screen-sm text-slate-800 text-opacity-100 leading-6 font-light">
-            Publish messages on channels and subscribe to channels to receive messages. Click&nbsp;<span className="font-medium">Publish from Client</span>&nbsp;to publish a message on a channel from the web browser client. Click&nbsp;<span className="font-medium">Publish from Server</span>&nbsp;to publish a message from a serverless function.
-          </div>
-          <PubSubMessages />
-        </div>      
-      </div>
+      <ChannelProvider channelName="status-updates">
+        <div className="flex flex-row justify-center">
+          <div className="flex flex-col justify-start items-start gap-10">
+            <SampleHeader sampleName="Pub/Sub Channels" sampleIcon="PubSubChannels.svg" sampleDocsLink="https://ably.com/docs/getting-started/react#useChannel" />
+            <div className="font-manrope text-base max-w-screen-sm text-slate-800 text-opacity-100 leading-6 font-light">
+              Publish messages on channels and subscribe to channels to receive messages. Click&nbsp;<span className="font-medium">Publish from Client</span>&nbsp;to publish a message on a channel from the web browser client. Click&nbsp;<span className="font-medium">Publish from Server</span>&nbsp;to publish a message from a serverless function.
+            </div>
+            <PubSubMessages />
+          </div>      
+        </div>
+      </ChannelProvider>
     </AblyProvider>
   )
 }
@@ -29,7 +31,7 @@ function PubSubMessages() {
 
   const [logs, setLogs] = useState<Array<LogEntry>>([])
 
-  const { channel } = useChannel("status-updates", (message: Ably.Types.Message) => {
+  const { channel } = useChannel("status-updates", (message: Ably.Message) => {
     setLogs(prev => [...prev, new LogEntry(`✉️ event name: ${message.name} text: ${message.data.text}`)])
   });
   

@@ -10,7 +10,7 @@ import { AblyProvider, useAbly, useConnectionStateListener } from 'ably/react'
 
 export default function Authentication() {
 
-  const client = new Ably.Realtime.Promise ({ authUrl: '/token', authMethod: 'POST' });
+  const client = new Ably.Realtime({ authUrl: '/token', authMethod: 'POST' });
 
   return (
     <AblyProvider client={ client }>
