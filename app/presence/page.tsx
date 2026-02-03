@@ -2,6 +2,8 @@
  * Warning: Opening too many live preview tabs will slow down performance.
  * We recommend closing them after you're done.
  */
+'use client'
+
 import React from "react";
 import "../global.css";
 import dynamic from 'next/dynamic';

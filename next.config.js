@@ -4,14 +4,16 @@ const nextConfig = {
   // useEffect with no dependencies to ensure the function
   // is only run once and only run on the client.
   reactStrictMode: false,
-  swcMinify: true,
   images: {
     dangerouslyAllowSVG: true,
-    domains: ['static.ably.dev'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'static.ably.dev',
+      },
+    ],
   },
-  experimental: {
-    serverComponentsExternalPackages: ['ably'],
-  },
+  serverExternalPackages: ['ably'],
 };
 
 module.exports = nextConfig;
